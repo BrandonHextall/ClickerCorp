@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <span id="follower" style="position:absolute; top:40px; left:40px;">mousefollower</span>
+
+    <script type="text/javascript">
+        document.addEventListener('mousemove', function(e) {
+        let body = document.querySelector('body');
+        let follower = document.getElementById('follower');
+        let left = e.offsetX + 40;
+        let top = e.offsetY;
+        follower.style.left = left + 'px';
+        follower.style.top = top + 'px';
+        follower.style.color = "red";
+        });
+    </script>
+</body>
+</html>

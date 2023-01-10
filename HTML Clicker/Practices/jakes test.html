@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Extensions: EJS, .NET, Javascript, Live Server, Live Share, Cyberpunk-->
+        <!--Workspaces , Command Prompts , VS-Code , Servers, Server Buildings , Multi-National Enterprises-->
+        <!--Make prestige-like aspect to the game-->
+        <!--Numbers: million-6 , billion-9 , trillion-12 , quadrillion-15 , quintillion-18 , sextillion-21 , septillion-24 , octillion-27 nonillion-30 , decillion-33 , undecillion-33 , duodecillion-39 , tredecillion-42 , quattuordecillion-45 , quindecillion-48 , sexdecillion-51 , septendecillion-54 , octodecillion-57 , novemdecillion-60-->
+        <!--obl is Owned Business Levels. Scripts needed formula: Math.pow(10,12)*(Math.pow((obl+1),3)-Math.pow(obl,3))-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Clicker Corp MK2 V1.0.2 </title>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <link href="https://fonts.cdnfonts.com/css/kavoon" rel="stylesheet">
+        <link href="https://fonts.cdnfonts.com/css/merriweather-sans" rel="stylesheet">
+        <link rel="icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi4a-bbc336bc-c60e-44db-b132-61931cc3138d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemk0YS1iYmMzMzZiYy1jNjBlLTQ0ZGItYjEzMi02MTkzMWNjMzEzOGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sTgevweW3G-93TrBZwu4M_5ncRm5r4ai6ocRnhMVDbE">
+    </head>
+    <body id="body" class="body" style="font-family:kavoon,sans-serif ; overflow:auto ; text-align:center ; outline-style:none ; user-select:none" tabindex="-1">
+        <style>.body p{user-select:none}#show_scripts{font-family:merriweather sans} #show_sps{font-family:merriweather sans} #click_num {font-family:merriweather sans}</style>
+        <div id="news_ticker" class="ticker" style="pointer-events:none" tabindex="-1">
+            <p id="news" class="news" tabindex="-1"> News </p>
+        </div>
+        <div id="clicker_stuff" class="clicker_stuff" tabindex="-1">
+            <div id="clicker">
+                <div id="coords">
+                    <input type="button" id="enter_bg" onclick="add_script()" tabindex="-1" style="background-color:white ; width: 300px ; left:155px ;" >
+                </div>
+                <input type="image" class="enter_button" id="enter_button" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi0m-abe71b79-6ad0-4a7e-97fb-2cd9ffcaacf0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemkwbS1hYmU3MWI3OS02YWQwLTRhN2UtOTdmYi0yY2Q5ZmZjYWFjZjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.HpmcZplj3UQ28CwtRfuBQT68xP4SjDk-k_9y6DmOIxY">
+                <p id="show_scripts" style="text-align:center"> 0 Scripts </p>
+                <p id="show_sps" style="text-align:center ; outline-style:none" tabindex="-1"> 0.0 Per Second </p>
+                <p id="click_num" class="clicknum" style="font-size:20px ; color:white ; outline-style:none" tabindex="-1"> +1 </p>
+                <style>
+                    .clicker_stuff{border:1px solid blue ; position:fixed ; left:0px ; top:0px ; width:600px ; height:967px}
+                    .clicker_stuff input{border:1px solid blue ; position:fixed ; width:400px ; height:400px ; left:100px ; top:450px}
+                    .clicker_stuff p{position:relative ; top:100px ; font-size:45px ; pointer-events:none}
+                    .enter_button{pointer-events:none}
+                </style>
+            </div>
+        </div>
+        <div id="prestige" class="prestige" name="sell_corporation" tabindex="-1">
+            <div id="prestige_btn_lvl" class="prestige_btn_lvl" tabindex="-1">
+                <button id="sell_corp_btn" name="font_button" onclick="show_confirm_prestige()" tabindex="-1" style="outline-style:none ; font-family:kavoon,sans-serif"> Prestige </button>
+                <p id="show_potential_prestige_levels" tabindex="-1"> 0 </p>
+                <script>function show_confirm_prestige(){document.getElementById("confirm_prestige").style.display="block"}</script>
+            </div>
+            <div id="prestige_desc" class="prestige_desc" tabindex="-1">
+                <p id="current_prestige_level"> 0 levels, granting you +0% sps </p>
+                <p id="pres_desc"> Prestige levels give you a heavenly ability to increase the production of scripts for you <em>and</em> your corporation.</p>
+                <p id="scripts_to_next_level"> 1000000000000 scripts to next level </p>
+            </div>
+            <style>
+                .prestige_btn_lvl button{position:absolute ; border:none ; font-family:kavoon,sans-serif ; right:620px ; top:93px ; font-size:20px}
+                .prestige_btn_lvl p{position:absolute ; top:80px ; right:720px}
+                .prestige_desc{position:fixed ; width:250px ; top:120px ; right:550px ; z-index:5 ; border:1px solid hotpink ; background-color: yellow ; display:none}
+                #prestige:hover .prestige_desc{display:block}
+            </style>
+        </div>
+        <div id="prestige_confirmed" class="prestige_confirmed" style="position:fixed ; border:3px solid hotpink ; background-color: aqua ; top:300px ; left:817px ; z-index: 10">
+            <input type="button" onclick="document.getElementById('prestige_confirmed').style.display='none'" style="position:fixed ; background-color:black ; opacity:0.2 ; width:1920px ; height:970px ; top:0px ; left:0px ; z-index: -1">
+            <p style="font-size:30px"> Prestige successful </p>
+            <p id="show_gained_prestige_levels" style="font-family:merriweather sans ; font-size:30px"> Levels gained: <b>0</b> </p>
+            <button onclick="document.getElementById('prestige_confirmed').style.display='none'" style="position: relative ; font-size:30px ; border:none ; top:-10px"> OK </button>
+        </div>
+        
+        <div id="confirm_prestige" class="confirm_prestige">
+            <input type="button" onclick="cancel_prestige()" style="position:fixed ; background-color:black ; opacity:0.2 ; width:1920px ; height:970px ; top:0px ; left:0px ; z-index: -1">
+            <p style="font-size:16px"> Do you really want to prestige and start over? You will gain any prestige points from this playthrough and reset your game </p>
+            <button id="confirm_prestige" name="font_button" onclick="confirm_prestige()" style="font-family:kavoon,sans-serif"> Confirm </button>
+            <button id="cancel_prestige" name="font_button" onclick="cancel_prestige()" style="font-family:kavoon,sans-serif"> Cancel </button>
+            <script>
+                function cancel_prestige(){document.getElementById("confirm_prestige").style.display="none"}
+                function confirm_prestige()
+                {
+                    scripts=0 ; clicks=0 ; sps=0 ; base_scripts_click=1 ;
+                    owned_cursors=0 ; owned_employees=0 ; owned_laptops=0 ; owned_files=0 ; owned_workspaces=0 ;
+                    cursor_cost=15 ; employee_cost=100 ; laptop_cost=1100 ; file_cost=12000 ; workspace_cost=130000 ;
+                    base_cursor_sps=0.1 ; base_employee_sps=1 ; base_laptop_sps=8 ; base_file_sps=47 ; base_workspace_sps=260 ;
+                    tbcsps=0 ; tbesps=0 ; tbfsps=0 ; tblsps=0 ; tbwsps=0
+                    tcsps=0 ; tesps=0 ; tlsps=0 ; tfsps=0 ; twsps=0 ; 
+                    add_extra_csps=0 ; total_extra_csps=0 ; add_csps=0
+                    non_curs_owned=0 ; total_scripts_click=1 ;
+                    create_src="" ; create_id="" ; click_id=1 ;
+                    c_id="" ; lifetime_scripts=0 ; font_num=1 ; scripts_this_run=0 ;
+                    extra_csps_upgrade1 = false ;
+                    const change_arr=["show_sps","show_scripts","owned_cursors","owned_employees","owned_laptops","owned_files","owned_workspaces","scripts_this_run","banked_scripts","scripts_per_second","show_potential_prestige_levels"]
+                    for (i=1 ; i!=18 ; i++){document.getElementById("div"+i).style.display="none"}
+                    for (let i=0 ; i!=10 ; i++){document.getElementById(change_arr[i].toString()).innerHTML="0"}
+                    const change_owned_arr=["show_owned_curs","show_owned_employees","show_owned_laptops","show_owned_files","show_owned_workspaces"]
+                    show_all()
+                    document.getElementById("confirm_prestige").style.display="none"
+                    document.getElementById("prestige_confirmed").style.display="block"
+                    document.getElementById("cursor_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5o8u-ed33713e-a8a4-494e-8003-f97892176704.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW84dS1lZDMzNzEzZS1hOGE0LTQ5NGUtODAwMy1mOTc4OTIxNzY3MDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4Vy7fUGerCJE2saF48yyEfnmWDSkB6cuZ9NjY1bzrsg"
+                    document.getElementById("employee_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5f1k-078a5ed4-aaf4-4c5e-ba44-55ca169f44f5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNWYxay0wNzhhNWVkNC1hYWY0LTRjNWUtYmE0NC01NWNhMTY5ZjQ0ZjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.apFRcfQ64StFvVk3lbolLFY9dhrk6-59lzgLN0UEvI8"
+                    document.getElementById("laptop_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhhw-002f82c3-71aa-4baa-907b-cfc3cdc253c9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhody0wMDJmODJjMy03MWFhLTRiYWEtOTA3Yi1jZmMzY2RjMjUzYzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rgJ33Vvuu7IDxi7bglZ4ARk4ARzinFuJpKO5ahYe8VQ"
+                    document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi885d-47496bf2-9e91-48d6-a9f3-f39b9d2222cb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpODg1ZC00NzQ5NmJmMi05ZTkxLTQ4ZDYtYTlmMy1mMzliOWQyMjIyY2IucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JESB6duSOJgEnB8eCnWcOtTfnPwoWvD3HhQc4rZcS4Y"
+                    document.getElementById("workspace_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi884f-03fac3d6-2856-4cee-8aff-4184f82f81dc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpODg0Zi0wM2ZhYzNkNi0yODU2LTRjZWUtOGFmZi00MTg0ZjgyZjgxZGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.S2aI5tHmLy9q1WKo8eR9CAfBwbyQhBy2h2tDp6nTFyg"
+                }
+                document.getElementById("confirm_prestige").style.display="none"
+                document.getElementById("prestige_confirmed").style.display="none"
+            </script>
+            <style>
+                .confirm_prestige{position:fixed ; width:300px ; height:200px ; border:1px solid hotpink ; z-index:1 ; left:810px ; top:300px ; background-color: blue}
+                .confirm_prestige button{border:none ; font-family:kavoon,sans-serif ; font-size:25px ; z-index:9;}
+                .confirm_prestige p{z-index: 9;}
+            </style>
+        </div>
+        <div id="info_div" class="info_div" tabindex="-1">
+            <button id="info_btn" class="info_btn" style="font-family:kavoon,sans-serif ; border:none" onclick="show_hide_info()" tabindex="-1"> Info</button>
+            <div id="info" class="info">
+                <p id="mk1_release_date" style="font-size:40px" tabindex="-1"><u>10/11/2022</u></p>
+                <p id="mk1_info" style="font-size:18px" tabindex="-1"><u>V1.0.1</u><br>&#x2022; First release<br>&#x2022; Took way too long to make<br>&#x2022; Hopefully gonna get more stuff added in future</p>
+                <p id="credit_header" style="font-size:40px" tabindex="-1"><U>Credits</U></p>
+                <p id="credits" style="font-size:18px" tabindex="-1">&#x2022; Lead programmer and team head: Brandon Hextall<br>&#x2022; Lead artist and icon designer: Ronnie Pooley<br>&#x2022; Tester and assistant programmer: Jake Holgate<br>&#x2022; Initial icon designs: Hussain</p>
+            </div>
+            <style>
+                .info_div button{position:absolute ; font-size:20px ; right:620px ; top:0px}
+                .info{position:absolute ; border:1px solid palevioletred ; width:663px ; height:817px ; pointer-events:none ; top:150px ; left:620px ; text-align:left ; padding-left:15px}
+            </style>
+        </div>
+        <div id="stat_div" class="stat_div" tabindex="-1">
+            <button id="stat_btn" class="stat_btn" style="font-family:kavoon,sans-serif ; border:none" onclick="show_hide_stats()" tabindex="-1"> Stats </button>
+            <div id="stats" class="stats">
+                <p id="banked_scripts" tabindex="-1"> Scripts in bank: 0 </p>
+                <p id="scripts_per_second" tabindex="-1"> Per second: 0.0 </p>
+                <p id="lifetime_scripts" tabindex="-1"> Lifetime scripts: 0 </p>
+                <p id="per_click" tabindex="-1"> Scripts per click: 1 </p>
+                <p id="scripts_this_run" tabindex="-1"> This run: 0 </p>
+                <p id="total_prestige_levels" tabindex="-1"> Business level :0 </p>
+            </div>
+            <style>
+                .stat_div button{position:absolute ; font-size:20px ; left:620px ; top:0px}
+                .stats{position:absolute ; border:1px solid orange ; width:663px ; height:817px ; pointer-events:none ; top:150px ; left:620px ; text-align:left ; padding-left:15px}
+                #stat_btn:hover{-webkit-text-stroke: 1px solid rgb(10, 170, 10)}
+            </style>
+        </div>
+        <div id="option_div" class="option_div" tabindex="-1">
+            <button id="option_btn" class="option_btn" name="font_button" style="font-family:kavoon,sans-serif" onclick="show_hide_options()" tabindex="-1"> Options </button>
+            <div id="options" class="options">
+                <header id="op_header" style="font-family:kavoon,sans-serif ; font-size:30px" tabindex="-1"><b><u> Options </u></b></header>
+                <br><br>
+                <p style="font-family:sans-serif" tabindex="-1"><button id="change_font" class="cf" onclick="change_font()" style="left:15px ; pointer-events:all ; user-select: none" tabindex="-1"> Simple font </button> changes the font to a more readable one </p>
+            </div>
+            <style>
+                .option_div button{position:absolute ; font-size:20px ; left:620px ; top:93px ; border:none}
+                .options{position:absolute ; border:1px solid dodgerblue ; width:663px ; height:817px ; pointer-events:none ; top:150px ; left:620px ; text-align:left ; padding-left:15px}
+                .options .cf{position:static}
+            </style>
+        </div>
+        <div id="items" class="items" tabindex="-1">
+            <div id="upgrades" class="upgrades" tabindex="-1">
+                <div id="div1" class="div1" name="cursor upgrade 1">
+                    <input type="button" onclick="buy1()" tabindex="-1">
+                    <img id="1" name="cu1" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5o8u-ed33713e-a8a4-494e-8003-f97892176704.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW84dS1lZDMzNzEzZS1hOGE0LTQ5NGUtODAwMy1mOTc4OTIxNzY3MDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4Vy7fUGerCJE2saF48yyEfnmWDSkB6cuZ9NjY1bzrsg">
+                    <p style="top:-20px"> x2 cur sps </p>
+                    <p style="bottom:-15px"> 100 Scripts </p>
+                    <script>
+                        function buy1()
+                        {
+                            if (scripts >= cursor_costs[0])
+                            {
+                                document.getElementById("div1").style.display="none"
+                                scripts = scripts - cursor_costs[0]
+                                base_scripts_click *= 2
+                                base_cursor_sps *= 2
+                                tbcsps *= 2
+                                tcsps *= 2
+                                add_sps()
+                                show_all()
+                                document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+                                
+                  
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div2" class="div2" name="cursor upgrade 2">
+                    <input type="button" onclick="buy2()" tabindex="-1">
+                    <img id="2" name="cu2" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nvw-5a813c7a-919f-449f-a894-f4370f4318c4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW52dy01YTgxM2M3YS05MTlmLTQ0OWYtYTg5NC1mNDM3MGY0MzE4YzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mlBBCFBwMk1E4_tSEucGIPtv2hUrKyBHKDmltnVv_x4">
+                    <p style="top:-20px"> x2 cur sps </p>
+                    <p style="bottom:-15px"> 500 Scripts </p>
+                    <script>
+                        function buy2()
+                        {
+                            if (scripts >= cursor_costs[1])
+                            {
+                                document.getElementById("div2").style.display="none"
+                                scripts = scripts - cursor_costs[1]
+                                base_scripts_click *= 2
+                                base_cursor_sps *= 2
+                                tbcsps *= 2
+                                tcsps *= 2
+                                add_sps()
+                                show_all()
+                                document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+                                document.getElementById("cursor_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nvw-5a813c7a-919f-449f-a894-f4370f4318c4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW52dy01YTgxM2M3YS05MTlmLTQ0OWYtYTg5NC1mNDM3MGY0MzE4YzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mlBBCFBwMk1E4_tSEucGIPtv2hUrKyBHKDmltnVv_x4"
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div3" class="div3" name="employee upgrade 1">
+                    <input type="button" onclick="buy3()" tabindex="-1">
+                    <img id="3" name="eu1" tabindex="-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEX///8AAADFxcXm5ubLy8swMDCUlJTCwsL5+flOTk6AgIDU1NSzs7Ourq5RUVHNzc1WVlZdXV1nZ2d0dHSKioqenp67u7vd3d3q6uoSEhIgICAoKChBQUGlpaXx8fE7OztwcHA2NjYu9fteAAACtklEQVR4nO3a21LiUBRFUbcghHCTCHJRBP//J22rtRohh+SEpPZZ9hzPPOxZFlRqmbs7AAAAAAAAAACA/1N2zLxP6NjIRt4ndOvRzB69j+jSwj4tvM/oTmF/Fd6HdOXJvj15n9KN3P7JvY/pwtJOLb3Pad/Afhp4H9S2lZ1beZ/UrulFoNnU+6g2TUoCzSbeZ7XnuTTQ7Nn7sLYMA4FmQ+/T2tEPBpr1vY9rw/hKoNnY+7zbra8Gmq29D7xVryLQrOd94m2qA8UTN9sahduN95nNve1qBJrt3rwPbSp7qRVo9iK6TmUPNQPNHjQT6wf+SfQ+tonXiECzV+9z482iAs1m3gfHWkQGym2MRXXRBamN8am6p4TQxtgsUCgxr24JEJlRz3fDGBIb4+VuGENgY9zfFGi29w6oUjaMxkl8Rg3thjGS3hjDu2GMhDfGa7thjGQ3xnlLgWZz75Ry14fROEnOqFXDaJwEZ9Q6u2GM5DbGTcuBZoltjG+tB5oltTHWHEbjpDSjRuyGMdLZGLNDJ4Fmh1QSw7vh9nAc7Ofhp/HJfD84HsL/3EhkYxyVlM3ywWS8/voT3AcLvp5dsvV4MshnJaVJvKp5Ooy+F/lqOD7/nQ8Xnj+AbsbDVV68n3wigRn1M3A3KpbT+3XoW1O/8Fu2vp8ui9EuhcT5tL+p+j2IL/yW9frTRJ/Cf2heqIJCfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUF+4MMnXuRsIFyb3qnNDFOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1Eehvt9f2N89lNv+lkIAAAAAAAAAAIA6PgAMPyMZIjcQogAAAABJRU5ErkJggg==">
+                    <p style="top:-20px"> x2 emp sps </p>
+                    <p style="bottom:-15px"> 1,000 Scripts </p>
+                    <script>
+                        function buy3()
+                        {
+                            if (scripts >= employee_costs[0])
+                            {
+                                document.getElementById("div3").style.display="none"
+                                scripts = scripts - employee_costs[0]
+                                base_employee_sps *= 2
+                                tbesps = owned_employees * base_employee_sps
+                                tesps = tbesps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div4" class="div4" name="employee upgrade 2">
+                    <input type="button" onclick="buy4()" tabindex="-1">
+                    <img id="4" name="eu2" tabindex="-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEX///8AAADFxcXm5ubLy8swMDCUlJTCwsL5+flOTk6AgIDU1NSzs7Ourq5RUVHNzc1WVlZdXV1nZ2d0dHSKioqenp67u7vd3d3q6uoSEhIgICAoKChBQUGlpaXx8fE7OztwcHA2NjYu9fteAAACtklEQVR4nO3a21LiUBRFUbcghHCTCHJRBP//J22rtRohh+SEpPZZ9hzPPOxZFlRqmbs7AAAAAAAAAACA/1N2zLxP6NjIRt4ndOvRzB69j+jSwj4tvM/oTmF/Fd6HdOXJvj15n9KN3P7JvY/pwtJOLb3Pad/Afhp4H9S2lZ1beZ/UrulFoNnU+6g2TUoCzSbeZ7XnuTTQ7Nn7sLYMA4FmQ+/T2tEPBpr1vY9rw/hKoNnY+7zbra8Gmq29D7xVryLQrOd94m2qA8UTN9sahduN95nNve1qBJrt3rwPbSp7qRVo9iK6TmUPNQPNHjQT6wf+SfQ+tonXiECzV+9z482iAs1m3gfHWkQGym2MRXXRBamN8am6p4TQxtgsUCgxr24JEJlRz3fDGBIb4+VuGENgY9zfFGi29w6oUjaMxkl8Rg3thjGS3hjDu2GMhDfGa7thjGQ3xnlLgWZz75Ry14fROEnOqFXDaJwEZ9Q6u2GM5DbGTcuBZoltjG+tB5oltTHWHEbjpDSjRuyGMdLZGLNDJ4Fmh1QSw7vh9nAc7Ofhp/HJfD84HsL/3EhkYxyVlM3ywWS8/voT3AcLvp5dsvV4MshnJaVJvKp5Ooy+F/lqOD7/nQ8Xnj+AbsbDVV68n3wigRn1M3A3KpbT+3XoW1O/8Fu2vp8ui9EuhcT5tL+p+j2IL/yW9frTRJ/Cf2heqIJCfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUF+4MMnXuRsIFyb3qnNDFOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1Eehvt9f2N89lNv+lkIAAAAAAAAAAIA6PgAMPyMZIjcQogAAAABJRU5ErkJggg==">
+                    <p style="top:-20px"> x2 emp sps </p>
+                    <p style="bottom:-15px"> 5,000 Scripts </p>
+                    <script>
+                        function buy4()
+                        {
+                            if (scripts >= employee_costs[1])
+                            {
+                                document.getElementById("div4").style.display="none"
+                                scripts = scripts - employee_costs[1]
+                                base_employee_sps *= 2
+                                tbesps = owned_employees * base_employee_sps
+                                tesps = tbesps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div5" class="div5" name="cursor upgrade 3">
+                    <input type="button" onclick="buy5()" tabindex="-1">
+                    <img id="5" name="cu3" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nwv-6a732eaa-80b9-4f73-bbf4-5827e52f8b51.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW53di02YTczMmVhYS04MGI5LTRmNzMtYmJmNC01ODI3ZTUyZjhiNTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-N3TwRS6dbEmE9WJswT33uWq5wnThFRz2i3rev8bUo8">
+                    <p style="top:-20px"> x2 cur sps </p>
+                    <p style="bottom:-15px"> 10,000 Scripts </p>
+                    <script>
+                        function buy5()
+                        {
+                            if (scripts >= cursor_costs[2])
+                            {
+                                document.getElementById("div5").style.display="none"
+                                scripts = scripts - cursor_costs[2]
+                                base_scripts_click *= 2
+                                base_cursor_sps *= 2
+                                tbcsps *= 2
+                                tcsps *= 2
+                                add_sps();show_all()
+                                document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+                                document.getElementById("cursor_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nwv-6a732eaa-80b9-4f73-bbf4-5827e52f8b51.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW53di02YTczMmVhYS04MGI5LTRmNzMtYmJmNC01ODI3ZTUyZjhiNTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-N3TwRS6dbEmE9WJswT33uWq5wnThFRz2i3rev8bUo8"
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div6" class="div6" name="laptop upgrade 1">
+                    <input type="button" onclick="buy6()" name="laptop upgrade 1">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhhw-002f82c3-71aa-4baa-907b-cfc3cdc253c9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhody0wMDJmODJjMy03MWFhLTRiYWEtOTA3Yi1jZmMzY2RjMjUzYzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rgJ33Vvuu7IDxi7bglZ4ARk4ARzinFuJpKO5ahYe8VQ">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 11,000 Scripts </p>
+                    <script>
+                        function buy6()
+                        {
+                            if (scripts >= laptop_costs[0])
+                            {
+                                document.getElementById("div6").style.display="none"
+                                scripts = scripts - laptop_costs[0]
+                                base_laptop_sps *= 2
+                                tblsps = owned_laptops * base_laptop_sps
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div7" class="div7" name="employee upgrade 3">
+                    <input type="button" onclick="buy7()" tabindex="-1">
+                    <img id="6" name="eu3" tabindex="-1" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAZlBMVEX///8AAADFxcXm5ubLy8swMDCUlJTCwsL5+flOTk6AgIDU1NSzs7Ourq5RUVHNzc1WVlZdXV1nZ2d0dHSKioqenp67u7vd3d3q6uoSEhIgICAoKChBQUGlpaXx8fE7OztwcHA2NjYu9fteAAACtklEQVR4nO3a21LiUBRFUbcghHCTCHJRBP//J22rtRohh+SEpPZZ9hzPPOxZFlRqmbs7AAAAAAAAAACA/1N2zLxP6NjIRt4ndOvRzB69j+jSwj4tvM/oTmF/Fd6HdOXJvj15n9KN3P7JvY/pwtJOLb3Pad/Afhp4H9S2lZ1beZ/UrulFoNnU+6g2TUoCzSbeZ7XnuTTQ7Nn7sLYMA4FmQ+/T2tEPBpr1vY9rw/hKoNnY+7zbra8Gmq29D7xVryLQrOd94m2qA8UTN9sahduN95nNve1qBJrt3rwPbSp7qRVo9iK6TmUPNQPNHjQT6wf+SfQ+tonXiECzV+9z482iAs1m3gfHWkQGym2MRXXRBamN8am6p4TQxtgsUCgxr24JEJlRz3fDGBIb4+VuGENgY9zfFGi29w6oUjaMxkl8Rg3thjGS3hjDu2GMhDfGa7thjGQ3xnlLgWZz75Ry14fROEnOqFXDaJwEZ9Q6u2GM5DbGTcuBZoltjG+tB5oltTHWHEbjpDSjRuyGMdLZGLNDJ4Fmh1QSw7vh9nAc7Ofhp/HJfD84HsL/3EhkYxyVlM3ywWS8/voT3AcLvp5dsvV4MshnJaVJvKp5Ooy+F/lqOD7/nQ8Xnj+AbsbDVV68n3wigRn1M3A3KpbT+3XoW1O/8Fu2vp8ui9EuhcT5tL+p+j2IL/yW9frTRJ/Cf2heqIJCfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUF+4MMnXuRsIFyb3qnNDFOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1EehPgr1UaiPQn0U6qNQH4X6KNRHoT4K9VGoj0J9FOqjUB+F+ijUR6E+CvVRqI9CfRTqo1Afhfoo1Eehvt9f2N89lNv+lkIAAAAAAAAAAIA6PgAMPyMZIjcQogAAAABJRU5ErkJggg==">
+                    <p style="top:-20px"> x2 emp sps </p>
+                    <p style="bottom:-15px"> 50,000 Scripts </p>
+                    <script>
+                        function buy7()
+                        {
+                            if (scripts >= employee_costs[2])
+                            {
+                                document.getElementById("div7").style.display="none"
+                                scripts = scripts - employee_costs[2]
+                                base_employee_sps *= 2
+                                tbesps = owned_employees * base_employee_sps
+                                tesps = tbesps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div8" class="div8" name="laptop upgrade 2">
+                    <input type="button" onclick="buy8()" name="laptop upgrade 2">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhig-b98c28db-fe59-4933-a637-361e8754c1d2.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhpZy1iOThjMjhkYi1mZTU5LTQ5MzMtYTYzNy0zNjFlODc1NGMxZDIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7kRQLiJHiqONLOkGetliWUIlAt7mPUtpegvjsZwKKR0">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 55,000 Scripts </p>
+                    <script>
+                        function buy8()
+                        {
+                            if (scripts >= laptop_costs[1])
+                            {
+                                document.getElementById("div8").style.display="none"
+                                scripts = scripts - laptop_costs[1]
+                                base_laptop_sps *= 2
+                                tblsps = tblsps * 2
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div9" class="div9" name="cursor upgrade 4">
+                    <input type="button" onclick="buy9()" tabindex="-1">
+                    <img id="7" name="cu4" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nyu-b16b8807-7262-4d97-a4d4-0e31f0c2d6b7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW55dS1iMTZiODgwNy03MjYyLTRkOTctYTRkNC0wZTMxZjBjMmQ2YjcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eIGKCpTnkUnErPGFmDMVM2KfH5BQ9w9an3EedIlCbYA">
+                    <p style="top:-20px"> +0.1 cur sps per non-cur </p>
+                    <p style="bottom:-15px"> 100,000 Scripts </p>
+                    <script>
+                        function buy9()
+                        {
+                            if (scripts >= cursor_costs[3])
+                            {
+                                document.getElementById("div9").style.display="none"
+                                scripts = scripts - cursor_costs[3]
+                                extra_csps_upgrade1=true
+                                add_csps = 0.1
+                                calc_cursor_upgrade1()
+                                num.innerHTML='+'+total_scripts_click
+                                add_sps();show_all()
+                                document.getElementById("cursor_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5nyu-b16b8807-7262-4d97-a4d4-0e31f0c2d6b7.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW55dS1iMTZiODgwNy03MjYyLTRkOTctYTRkNC0wZTMxZjBjMmQ2YjcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eIGKCpTnkUnErPGFmDMVM2KfH5BQ9w9an3EedIlCbYA"
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div10" class="div10" name="laptop upgrade 3">
+                    <input type="button" onclick="buy10()" name="laptop upgrade 3">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhix-173a6153-7012-4838-969b-3ebb8bcc76bf.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhpeC0xNzNhNjE1My03MDEyLTQ4MzgtOTY5Yi0zZWJiOGJjYzc2YmYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.OxRCVEyw-_oOncIMo_CbKWAmOQ_sKOQvhC1NrWQgyAU">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 550,000 Scripts </p>
+                    <script>
+                        function buy10()
+                        {
+                            if (scripts >= laptop_costs[2])
+                            {
+                                document.getElementById("div10").style.display="none"
+                                scripts = scripts - laptop_costs[2]
+                                base_laptop_sps *= 2
+                                tblsps = owned_laptops * base_laptop_sps
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div11" class="div11" name="file upgrade 1">
+                    <input type="button" onclick="buy11()" name="file upgrade 1">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqk6-d01b6fac-a410-4248-998f-9ba03f7bcd89.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFrNi1kMDFiNmZhYy1hNDEwLTQyNDgtOTk4Zi05YmEwM2Y3YmNkODkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.tZc50FI9REuuIU1WcspZxC8gq_zxH9tPgq3luMo5Fyc">
+                    <p style="top:-20px"> x2 File sps </p>
+                    <p style="bottom:-15px"> 600,000 Scripts </p>
+                    <script>
+                        function buy11()
+                        {
+                            if (scripts >= file_costs[0])
+                            {
+                                document.getElementById("div11").style.display="none"
+                                document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqk6-d01b6fac-a410-4248-998f-9ba03f7bcd89.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFrNi1kMDFiNmZhYy1hNDEwLTQyNDgtOTk4Zi05YmEwM2Y3YmNkODkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.tZc50FI9REuuIU1WcspZxC8gq_zxH9tPgq3luMo5Fyc"
+                                scripts = scripts - file_costs[0]
+                                base_file_sps *= 2
+                                tbfsps *= 2
+                                tfsps = tbfsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div12" class="div12" name="file upgrade 2">
+                    <input type="button" onclick="buy12()" name="file upgrade 2">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqky-b1158871-7bc1-4c6d-957d-fb0b71af1db3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFreS1iMTE1ODg3MS03YmMxLTRjNmQtOTU3ZC1mYjBiNzFhZjFkYjMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mOMUORITxYl_Uuh7FSqWHtCsHzvGrrHa5y39wj9u_FE">
+                    <p style="top:-20px"> x2 File sps </p>
+                    <p style="bottom:-15px"> 6 million Scripts </p>
+                    <script>
+                        function buy12()
+                        {
+                            if (scripts >= file_costs[1])
+                            {
+                                document.getElementById("div12").style.display="none"
+                                document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqky-b1158871-7bc1-4c6d-957d-fb0b71af1db3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFreS1iMTE1ODg3MS03YmMxLTRjNmQtOTU3ZC1mYjBiNzFhZjFkYjMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.mOMUORITxYl_Uuh7FSqWHtCsHzvGrrHa5y39wj9u_FE"
+                                scripts = scripts - file_costs[1]
+                                base_file_sps *= 2
+                                tbfsps *= 2
+                                tfsps = tbfsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div13" class="div13" name="laptop upgrade 4">
+                    <input type="button" onclick="buy13()" name="laptop upgrade 4">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhjc-643ad2eb-5027-4a37-9f91-ffc470c0bed5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhqYy02NDNhZDJlYi01MDI3LTRhMzctOWY5MS1mZmM0NzBjMGJlZDUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MSx70nfZL13uKxwZpOsccEoKW3KAkbDsDWPSuDp-_D0">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 55 million Scripts </p>
+                    <script>
+                        function buy13()
+                        {
+                            if (scripts >= laptop_costs[3])
+                            {
+                                document.getElementById("div13").style.display="none"
+                                scripts = scripts - laptop_costs[3]
+                                base_laptop_sps *= 2
+                                tblsps = owned_laptops * base_laptop_sps
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div14" class="div14" name="file upgrade 3">
+                    <input type="button" onclick="buy14()" name="file upgrade 3">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqlc-492b7506-fc69-48a4-914e-13b1ae058733.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFsYy00OTJiNzUwNi1mYzY5LTQ4YTQtOTE0ZS0xM2IxYWUwNTg3MzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.XQLMswnWT947sh33S8VLE-kNk8dfYulUPGZ7LRF0T-Q">
+                    <p style="top:-20px"> x2 File sps </p>
+                    <p style="bottom:-15px"> 600 million Scripts </p>
+                    <script>
+                        function buy14()
+                        {
+                            if (scripts >= file_costs[2])
+                            {
+                                document.getElementById("div14").style.display="none"
+                                document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqlc-492b7506-fc69-48a4-914e-13b1ae058733.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFsYy00OTJiNzUwNi1mYzY5LTQ4YTQtOTE0ZS0xM2IxYWUwNTg3MzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.XQLMswnWT947sh33S8VLE-kNk8dfYulUPGZ7LRF0T-Q"
+                                scripts = scripts - file_costs[2]
+                                base_file_sps *= 2
+                                tbfsps *= 2
+                                tfsps = tbfsps
+                                sps=(tcsps+tesps+tlsps+tfsps+twsps)*prestige_boost_mult
+                                document.getElementById("show_sps").innerHTML=sps+" Per Second"
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div15" class="div15" name="laptop upgrade 5">
+                    <input type="button" onclick="buy15()" name="laptop upgrade 5">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhjq-535c60b6-d43b-4720-ab02-7fe2c8d78e60.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhqcS01MzVjNjBiNi1kNDNiLTQ3MjAtYWIwMi03ZmUyYzhkNzhlNjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.wSYXfOzH5_nX50JUTgFxn9L3KHBZJqOlgVhBdeD6FFM">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 5.5 billion Scripts </p>
+                    <script>
+                        function buy15()
+                        {
+                            if (scripts >= laptop_costs[4])
+                            {
+                                document.getElementById("div15").style.display="none"
+                                scripts = scripts - laptop_costs[4]
+                                base_laptop_sps *= 2
+                                tblsps = owned_laptops * base_laptop_sps
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div16" class="div16" name="file upgrade 4">
+                    <input type="button" onclick="buy16()" name="file upgrade 4">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqm1-5fd8d6a6-77fe-46d7-a45d-d53d9725cdb6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFtMS01ZmQ4ZDZhNi03N2ZlLTQ2ZDctYTQ1ZC1kNTNkOTcyNWNkYjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-EZzUerB5xNgmRFPQc0UDR-7xXVvN7Y3vJ0EjwScyGA">
+                    <p style="top:-20px"> x2 sps </p>
+                    <p style="bottom:-15px"> 60 billion Scripts </p>
+                    <script>
+                        function buy16()
+                        {
+                            if (scripts >= file_costs[3])
+                            {
+                                document.getElementById("div16").style.display="none"
+                                document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqm1-5fd8d6a6-77fe-46d7-a45d-d53d9725cdb6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFtMS01ZmQ4ZDZhNi03N2ZlLTQ2ZDctYTQ1ZC1kNTNkOTcyNWNkYjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-EZzUerB5xNgmRFPQc0UDR-7xXVvN7Y3vJ0EjwScyGA"
+                                scripts = scripts - file_costs[3]
+                                base_file_sps *= 2
+                                tbfsps = tbfsps * 2
+                                tfsps = tbfsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div17" class="div17" name="laptop upgrade 6">
+                    <input type="button" onclick="buy17()" name="laptop upgrade 6">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhk3-6b19c8eb-bca2-4095-a85e-ae8cbd0424e1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhrMy02YjE5YzhlYi1iY2EyLTQwOTUtYTg1ZS1hZThjYmQwNDI0ZTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.hBAoHhsBTyarsyqkbulEZ-teQhVFVpMiUi-e4p8zags">
+                    <p style="top:-20px"> x2 laptop sps </p>
+                    <p style="bottom:-15px"> 550 billion Scripts </p>
+                    <script>
+                        function buy17()
+                        {
+                            if (scripts >= laptop_costs[5])
+                            {
+                                document.getElementById("div17").style.display="none"
+                                scripts = scripts - laptop_costs[5]
+                                base_laptop_sps *= 2
+                                tblsps = owned_laptops * base_laptop_sps
+                                tlsps = tblsps
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <div id="div18" class="div18" name="file upgrade 5">
+                    <input type="button" onclick="buy18()" name="file upgrade 5">
+                    <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqmk-d33b01e2-8e2b-4d31-9f67-a0903d4236f9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFtay1kMzNiMDFlMi04ZTJiLTRkMzEtOWY2Ny1hMDkwM2Q0MjM2ZjkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.YkM7Msx2ulrLEK7OmetzTFIzenA0pa_kAnzxbdM75wI">
+                    <p style="top:-20px"> x2 sps </p>
+                    <p style="bottom:-15px"> 6 trillion Scripts </p>
+                    <script>
+                        function buy18()
+                        {
+                            if (scripts >= file_costs[4])
+                            {
+                                document.getElementById("div18").style.display="none"
+                                document.getElementById("file_icon").src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqmk-d33b01e2-8e2b-4d31-9f67-a0903d4236f9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFtay1kMzNiMDFlMi04ZTJiLTRkMzEtOWY2Ny1hMDkwM2Q0MjM2ZjkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.YkM7Msx2ulrLEK7OmetzTFIzenA0pa_kAnzxbdM75wI"
+                                scripts = scripts - file_costs[4]
+                                base_file_sps *= 2
+                                tbfsps *= 2
+                                tfsps = tbfsps
+                                sps=(tcsps+tesps+tlsps+tfsps+twsps)*prestige_boost_mult
+                                document.getElementById("show_sps").innerHTML=sps+" Per Second"
+                                add_sps();show_all()
+                            }
+                        }
+                    </script>
+                </div>
+                <style>
+                    .upgrades{border:1px solid blue ; position:relative ; left:0px ; top:0px ; text-align:left ; width:560px ; height:138px ; padding:none ; user-select:none}
+                    .upgrades div{position:relative ; display:inline ; border:1px solid darkblue ; width:138px ; height:138px ; float:left}
+                    .upgrades img{position:relative ; display:inline ; border:1px solid cyan ; width:136px ; height:136px ; pointer-events:none}
+                    .upgrades input{position:absolute ; width:138px ; height:138px}
+                    .upgrades p{position:absolute ; pointer-events:none ; text-align:center ; user-select:none ; outline-style:none ; font-size:20px ; width:136px ; left:0px ; -webkit-text-stroke:1px white}
+                    .items{border:2px solid black ; position:fixed ; top:0px ; right:0px ; width:580px ; height:965px ; overflow-y:auto}
+                </style>
+            </div>
+            <img id="upgrade_item_bar" style="left:580px ; height:30px ; width:580px ; pointer-events:none" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhja0q-51823273-dddb-4d78-9d16-40301b06ebdc.png/v1/fill/w_1280,h_128,q_80,strp/horizontal_divider_image_by_clickercorp_dfhja0q-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4IiwicGF0aCI6IlwvZlwvZjQ5ZDBhNzMtMzkwOC00Y2U5LWExMWYtYzlmYzdjYjIwNzQ1XC9kZmhqYTBxLTUxODIzMjczLWRkZGItNGQ3OC05ZDE2LTQwMzAxYjA2ZWJkYy5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.1uGmf7Z5luCrZed5u0wTAaUbxtfqY1Jxhizxn3Gwi_A ">
+            <div id="bars" class="bars" tabindex="-1" style="position:fixed">
+                <img id="right_clicker_bar" tabindex="-1" style="left:580px ; pointer-events:none" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhj8d9-37ff73c5-9896-4c4c-b311-589e255501dd.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoajhkOS0zN2ZmNzNjNS05ODk2LTRjNGMtYjMxMS01ODllMjU1NTAxZGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4ryX-YIQC2y02Ck6HrEdM_E8Lo4mMt7RZ2Z8NyBlX4c">
+                <img id="left_item_bar" tabindex="-1" style="right:580px ; pointer-events:none" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhj8d9-37ff73c5-9896-4c4c-b311-589e255501dd.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoajhkOS0zN2ZmNzNjNS05ODk2LTRjNGMtYjMxMS01ODllMjU1NTAxZGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4ryX-YIQC2y02Ck6HrEdM_E8Lo4mMt7RZ2Z8NyBlX4c">
+                <img id="extra_button_div" tabindex="-1" style="right:619px ; height:30px ; width:681px ; top:120px ; pointer-events:none" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhja0q-51823273-dddb-4d78-9d16-40301b06ebdc.png/v1/fill/w_1280,h_128,q_80,strp/horizontal_divider_image_by_clickercorp_dfhja0q-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTI4IiwicGF0aCI6IlwvZlwvZjQ5ZDBhNzMtMzkwOC00Y2U5LWExMWYtYzlmYzdjYjIwNzQ1XC9kZmhqYTBxLTUxODIzMjczLWRkZGItNGQ3OC05ZDE2LTQwMzAxYjA2ZWJkYy5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.1uGmf7Z5luCrZed5u0wTAaUbxtfqY1Jxhizxn3Gwi_A ">
+                <style>.bars img{position:fixed ; top:0px ; width:40px ; height:969px ; z-index:3;}</style>
+            </div>
+            <div id="cur_div" class="cur_div">
+                <div id="cursor_info_stuff" class="cursor_info_stuff">
+                    <p id="cursor_info_name" style="font-size:20px"> Cursor </p>
+                    <p id="show_owned_curs"> Owned: 0 </p>
+                    <p id="cursor_desc" style="font-size:14px ; text-align: right"><em>Autoclicks once every ten seconds.</em></p>
+                    <style>
+                        .cursor_info_stuff
+                        {
+                            position:fixed ; border:1px solid red ;
+                            width:350px ; height:150px ; padding:10px ;
+                            right:620px ; z-index:3 ; display:none ;
+                            text-align:left ;
+                        }
+                        #cur_div:hover #cursor_info_stuff{display:inline}
+                    </style>
+                </div>
+                <div id="cursor_stuff" class="cursor_stuff" tabindex="-1" style="-webkit-text-stroke: 1px orange">
+                    <img id="cursor_btn" class="cursor_background_button" onclick="buy_cursor()" tabindex="-1" style="width:100% ; height:100%" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqo8-bf1fc3d7-186a-491a-9712-e96561063fc4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFvOC1iZjFmYzNkNy0xODZhLTQ5MWEtOTcxMi1lOTY1NjEwNjNmYzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s2Gxmma1XZE_D6baPmbOHb-YsxY9iTG0V0z1w3KEpyA">
+                    <div id="cursor" class="cursor">
+                        <img id="cursor_icon" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5o8u-ed33713e-a8a4-494e-8003-f97892176704.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNW84dS1lZDMzNzEzZS1hOGE0LTQ5NGUtODAwMy1mOTc4OTIxNzY3MDQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.4Vy7fUGerCJE2saF48yyEfnmWDSkB6cuZ9NjY1bzrsg">
+                        <div id="ocs" class="ocs">
+                            <p id="owned_cursors" style="font-size:70px ; top:-60px"> 0 </p>
+                        </div>
+                        <p id="cursor_name" style="font-size:50px ; top:-35px ; color:rgba(255, 240, 240, 0.867) ; left:130px" tabindex="-1"> Cursor </p>
+                        <p id="cursor_cost" style="font-size:30px ; color:rgb(10, 170, 10)" tabindex="-1"> 15 Scripts </p>
+                    </div>
+                    <style>
+                    .cursor_stuff{border:1px solid red ; position:relative ; width:558px ; height:135px ; left:2px}
+                    .cursor_stuff input{position:relative ; width:558px ; height:135px}
+                    .cursor img{border:1px solid blue ; position:absolute ; width:100px ; height:110px ; left:10px ; top:8% ; pointer-events:none}
+                    .cursor p{border:2px solid purple ; position:absolute ; left:22% ; top:40% ; pointer-events:none}
+                    .cursor .ocs{position:absolute ; top:30px ; right:100px ; pointer-events:none}
+                    </style>
+                </div>
+            </div>
+            <div id="emp_div" class="emp_div">
+                <div id="employee_info_stuff" class="employee_info_stuff">
+                    <p id="employee_info_name" style="font-size:20px"> Employee </p>
+                    <p id="show_owned_employees"> Owned: 0 </p>
+                    <p id="employee_desc" style="font-size:14px ; text-align:right"><em>An employee to slave away at the expense of a few scripts.</em></p>
+                    <style>
+                        .employee_info_stuff
+                        {
+                            position:fixed ; border:1px solid red ;
+                            width:350px ; height:150px ; padding:10px ;
+                            right:620px ; z-index:3 ; display:none ;
+                            text-align:left ;
+                        }
+                        #emp_div:hover #employee_info_stuff{display:inline}
+                    </style>
+                </div>
+                <div id="employee_stuff" class="employee_stuff">
+                    <img id="employee_btn" class="employee_background_button" onclick="buy_employee()" tabindex="-1" style="width:100% ; height:100%" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqo8-bf1fc3d7-186a-491a-9712-e96561063fc4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFvOC1iZjFmYzNkNy0xODZhLTQ5MWEtOTcxMi1lOTY1NjEwNjNmYzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s2Gxmma1XZE_D6baPmbOHb-YsxY9iTG0V0z1w3KEpyA">
+                    <div id="employee" class="employee">
+                        <img id="employee_icon" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi5f1k-078a5ed4-aaf4-4c5e-ba44-55ca169f44f5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpNWYxay0wNzhhNWVkNC1hYWY0LTRjNWUtYmE0NC01NWNhMTY5ZjQ0ZjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.apFRcfQ64StFvVk3lbolLFY9dhrk6-59lzgLN0UEvI8">
+                        <img id="shadow_emp" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhnf-c120e141-627d-498f-9979-5d4d75ee0dc5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhuZi1jMTIwZTE0MS02MjdkLTQ5OGYtOTk3OS01ZDRkNzVlZTBkYzUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.7ch9OePxjxUR_cQ-S_I7vg-HGLiEC730FzLTwR-O9ik">
+                        <div id="oep" class="oep">
+                            <p id="owned_employees" style="font-size:70px ; top:-50px" tabindex="-1"> 0 </p>
+                        </div>
+                        <p id="employee_stuff_name" tabindex="-1" style="font-size:50px ; color:rgba(255, 240, 240, 0.867) ; top:-35px ; left:130px"> ??? </p>
+                        <p id="employee_cost" tabindex="-1" style="font-size:30px ; color:rgb(10, 170, 10)"> 100 Scripts </p>
+                    </div>
+                    <style>
+                        .employee_stuff{border:1px solid red ; position:relative ; width:558px ; height:135px ; left:2px}
+                        .employee_stuff input{position:relative ; width:558px ; height:135px}
+                        .employee img{border:1px solid blue ; position:absolute ; width:100px ; height:110px ; left:10px ; top:8% ; pointer-events:none}
+                        .employee p{border:2px solid purple ; position:absolute ; left:22% ; top:40% ; pointer-events:none}
+                        .employee .oep{position:absolute ; top:30px ; right:100px ; pointer-events:none}
+                    </style>
+                </div>
+            </div>
+            <div id="lap_div" class="lap_div">
+                <div id="laptop_info_stuff" class="laptop_info_stuff">
+                    <p id="laptop_info_name" style="font-size:20px"> Laptop </p>
+                    <p id="show_owned_laptops"> Owned: 0 </p>
+                    <p id="laptop_desc" style="font-size:14px ; text-align:right"><em>Types extra fast to maximise script production.</em></p>
+                    <style>
+                        .laptop_info_stuff
+                        {
+                            position:fixed ; border:1px solid red ;
+                            width:350px ; height:150px ; padding:10px ;
+                            right:620px ; z-index:3 ; display:none ;
+                            text-align:left ;
+                        }
+                        #lap_div:hover #laptop_info_stuff{display:inline}
+                    </style>
+                </div>
+                <div id="laptop_stuff" class="laptop_stuff">
+                    <img id="laptop_btn" class="laptop_background_button" onclick="buy_laptop()" tabindex="-1" style="width:100% ; height:100%" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqo8-bf1fc3d7-186a-491a-9712-e96561063fc4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFvOC1iZjFmYzNkNy0xODZhLTQ5MWEtOTcxMi1lOTY1NjEwNjNmYzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s2Gxmma1XZE_D6baPmbOHb-YsxY9iTG0V0z1w3KEpyA">
+                    <div id="laptop" class="laptop">
+                        <img id="laptop_icon" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhhw-002f82c3-71aa-4baa-907b-cfc3cdc253c9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhody0wMDJmODJjMy03MWFhLTRiYWEtOTA3Yi1jZmMzY2RjMjUzYzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rgJ33Vvuu7IDxi7bglZ4ARk4ARzinFuJpKO5ahYe8VQ">
+                        <img id="shadow_laptop" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhnw-18dbc0c8-bebf-46d9-b445-7863f7fd5c5c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhudy0xOGRiYzBjOC1iZWJmLTQ2ZDktYjQ0NS03ODYzZjdmZDVjNWMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.a7yCmhDTdaDmuqAV3r1_0QT42wfaIk6Tdyftd4NHI6U">
+                        <div id="olp" class="olp">
+                            <p id="owned_laptops" tabindex="-1" style="font-size:70px ; top:-60px"> 0 </p>
+                        </div>
+                        <p id="laptop_name" tabindex="-1" style="font-size:50px ; color:rgba(255, 240, 240, 0.867) ; top:-35px ; left:130px"> Laptop </p>
+                        <p id="laptop_cost" tabindex="-1" style="font-size:30px ; color:rgb(10, 170, 10)"> 1100 Scripts </p>
+                    </div>
+                    <style>
+                        .laptop_stuff{border:1px solid red ; position:relative ; width:558px ; height:135px ; left:2px}
+                        .laptop_stuff input{position:relative ; width:558px ; height:135px ;}
+                        .laptop img{border:1px solid blue ; position:absolute ; width:100px ; height:110px ; left:10px ; top:8% ; pointer-events:none}
+                        .laptop p{border:2px solid purple ; position:absolute ; left:22% ; top:40% ; pointer-events:none}
+                        .laptop .olp{position:absolute ; top:30px ; right:100px ; pointer-events:none}
+                    </style>
+                </div>
+            </div>
+            <div id="file_div" class="file_div">
+                <div id="file_info_stuff" class="file_info_stuff">
+                    <p id="file_name" style="font-size:20px"> File </p>
+                    <p id="show_owned_files"> Owned: 0 </p>
+                    <p id="file_desc" style="font-size:14px ; text-align:right"><em>Stores created scripts for later, more productive, use.</em></p>
+                    <style>
+                        .file_info_stuff
+                        {
+                            position:fixed ; border:1px solid red ;
+                            width:350px ; height:150px ; padding:10px ;
+                            right:620px ; z-index:3 ; display:none ;
+                            text-align:left ;
+                        }
+                        #file_div:hover #file_info_stuff{display:inline}
+                    </style>
+                </div>
+                <div id="file_stuff" class="file_stuff">
+                    <img id="file_btn" class="file_background_button" onclick="buy_file()" tabindex="-1" style="width:100% ; height:100%" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqo8-bf1fc3d7-186a-491a-9712-e96561063fc4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFvOC1iZjFmYzNkNy0xODZhLTQ5MWEtOTcxMi1lOTY1NjEwNjNmYzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s2Gxmma1XZE_D6baPmbOHb-YsxY9iTG0V0z1w3KEpyA">
+                    <input type="button" id="file_btn" class="file_btn" onclick="buy_file()" tabindex="-1" style="width:100% ; height:100% ; background-color:none">
+                    <div id="file" class="file">
+                        <img id="file_icon" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi885d-47496bf2-9e91-48d6-a9f3-f39b9d2222cb.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpODg1ZC00NzQ5NmJmMi05ZTkxLTQ4ZDYtYTlmMy1mMzliOWQyMjIyY2IucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.JESB6duSOJgEnB8eCnWcOtTfnPwoWvD3HhQc4rZcS4Y">
+                        <img id="shadow_file" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhoj-a1694645-a6db-4644-967a-cf12d0b61c5f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhvai1hMTY5NDY0NS1hNmRiLTQ2NDQtOTY3YS1jZjEyZDBiNjFjNWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.8K2rXY52sqdl_IJ9n6_7HgGGf1vgVMckWD8qJxvopQg">
+                        <div id="of" class="of">
+                            <p id="owned_files" tabindex="-1" style="font-size:70px ; top:-70px"> 0 </p>
+                        </div>
+                        <p id="file_name" tabindex="-1" style="font-size:50px ; color:rgba(255, 240, 240, 0.867) ; top:-35px ; left:130px"> File </p>
+                        <p id="file_cost" tabindex="-1" style="font-size:30px ; color:rgb(10, 170, 10)"> 12000 Scripts </p>
+                    </div>
+                    <style>
+                        .file_stuff{border:1px solid red ; position:relative ; width:558px ; height:135px ; left:2px}
+                        .file_stuff input{position:relative ; width:558px ; height:135px}
+                        .file img{border:1px solid blue ; position:absolute ; width:100px ; height:110px ; left:10px ; top:8% ; pointer-events:none}
+                        .file p{border:2px solid purple ; position:absolute ; left:22% ; top:40% ; pointer-events:none}
+                        .file .of{position:absolute ; top:30px ; right:100px ; pointer-events:none}
+                    </style>
+                </div>
+            </div>
+            <div id="workspace_div" class="workspace_div">
+                <div id="workspace_info_stuff" class="workspace_info_stuff">
+                    <p id="workspace_info_name" style="font-size:20px"> Workspace </p>
+                    <p id="show_owned_workspaces"> Owned: 0 </p>
+                    <p id="workspace_desc" style="font-size:14px ; text-align: right"><em>A nice private space for your employees to slave away blissfully for you</em></p>
+                    <style>
+                        .workspace_info_stuff
+                        {
+                            position:fixed ; border:1px solid red ;
+                            width:350px ; height:150px ; padding:10px ;
+                            right:620px ; z-index:3 ; display:none ;
+                            text-align:left ;
+                        }
+                        #workspace_div:hover #workspace_info_stuff{display:inline}
+                    </style>
+                </div>
+                <div id="workspace_stuff" class="workspace_stuff">
+                    <img id="workspace_btn" class="workspace_background_button" onclick="buy_workspace()" tabindex="-1" style="width:100% ; height:100%" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfirqo8-bf1fc3d7-186a-491a-9712-e96561063fc4.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpcnFvOC1iZjFmYzNkNy0xODZhLTQ5MWEtOTcxMi1lOTY1NjEwNjNmYzQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.s2Gxmma1XZE_D6baPmbOHb-YsxY9iTG0V0z1w3KEpyA">
+                    <div id="workspace" class="workspace">
+                        <img id="workspace_icon" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi884f-03fac3d6-2856-4cee-8aff-4184f82f81dc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpODg0Zi0wM2ZhYzNkNi0yODU2LTRjZWUtOGFmZi00MTg0ZjgyZjgxZGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.S2aI5tHmLy9q1WKo8eR9CAfBwbyQhBy2h2tDp6nTFyg">
+                        <img id="shadow_workspace" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfijhp5-97f59397-940d-4173-b48c-0a41573c6c6a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpamhwNS05N2Y1OTM5Ny05NDBkLTQxNzMtYjQ4Yy0wYTQxNTczYzZjNmEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.SOJfVeYaWEH9MynasIjqr50IXwoKt1jaLD31VLJ3QZQ">
+                        <div id="owp" class="owp">
+                            <p id="owned_workspaces" tabindex="-1" style="font-size:70px ; top:-60px"> 0 </p>
+                        </div>
+                        <p id="workspace_name" tabindex="-1" style="font-size:50px ; color:rgba(255, 240, 240, 0.867) ; top:-35px ; left:130px"> Workspace </p>
+                        <p id="workspace_cost" tabindex="-1" style="font-size:30px ; color:rgb(10, 170, 10)"> 130000 Scripts </p>
+                    </div>
+                    <style>
+                        .workspace_stuff{border:1px solid red ; position:relative ; width:558px ; height:135px ; left:2px}
+                        .workspace_stuff input{position:relative ; width:558px ; height:135px}
+                        .workspace img{border:1px solid blue ; position:absolute ; width:100px ; height:110px ; left:10px ; top:8% ; pointer-events:none}
+                        .workspace p{border:2px solid purple ; position:absolute ; left:22% ; top:40% ; pointer-events:none}
+                        .workspace .owp{position:absolute ; top:30px ; right:100px ; pointer-events:none}
+                    </style>
+                </div>
+            </div>
+            
+        </div>
+        <div id="name" class="name" tabindex="-1">
+            <input type="image" tabindex="-1" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfi887r-d3ecf4fe-4dad-4057-b11e-e0c183e7f0f8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZpODg3ci1kM2VjZjRmZS00ZGFkLTQwNTctYjExZS1lMGMxODNlN2YwZjgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ZmBrWb6j2iQFVcI3I9-TtTZ2Qtw0-tljA3lzS1EkWS4">
+            <button id="name_btn" class="name_btn" name="font_button" tabindex="-1" onclick="show_name_changer()" style="font-family:kavoon,sans-serif"> Your Corporation </button>
+            <style>
+                .name input{position:absolute ; background:none ; border:1px solid aqua ; width:450px ; height:100px ; left:80px ; top:20px}
+                .name button{position:absolute ; background:none ; border-color :1px solid rgb(10, 170, 10) ; width:450px ; height:100px ; left:81px ; top:21px ; font-size:40px}
+                .name p{border:2px solid orange ; position:absolute ; width:330px ; height:80px ; text-align:center ; left:140px ; top:15px ; pointer-events:none}
+            </style>
+        </div>
+        <div id="change_background" class="change_background" name="font_button" tabindex="-1">
+            <button id="name_change_background" class="name_change_background" tabindex="-1" onclick="back_to_game()" style="font-family:kavoon,sans-serif"></button>
+            <style>.change_background button{position:absolute ; background-color:black ; border:none ; opacity:0.4 ; left:0% ; top:0% ; width:100% ; height:100%}</style>
+        </div>
+        <div id="name_changer" class="name_changer" tabindex="-1">
+            <p style="font-size:19px" tabindex="-1"><b> Enter the new name of your corporation </b></p>
+            <input type="text" id="new_name" tabindex="-1">
+            <button id="name_button" name="font_button" tabindex="-1" onclick="change_name()"  style="font-family:kavoon,sans-serif"> Done </button>
+            <style>
+                .name_changer{position:absolute ; border:2px solid darkmagenta ; background-color:hotpink ; width:350px ; height:175px ; left:41.6% ; top:37.5%}
+                .name_changer input{position:relative ; border:1px solid grey ; top:-5% ; font-size:20px}
+                .name_changer button{position:inherit ; font-size:20px ; top:120px ; left:42.5%}
+            </style>
+        </div>
+        <script>
+            //variables
+            var scripts=1111111 ; clicks=0 ; sps=0 ; base_scripts_click=1 ;
+            //owned
+            var owned_cursors=0 ; owned_employees=0 ; owned_laptops=0 ; owned_files=0 ; owned_workspaces=0 ;
+            //costs
+            var cursor_cost=15 ; employee_cost=100 ; laptop_cost=1100 ; file_cost=12000 ; workspace_cost=130000 ;
+            //base sps
+            var base_cursor_sps=0.1 ; base_employee_sps=1 ; base_laptop_sps=8 ; base_file_sps=47 ; base_workspace_sps=260 ;
+            //total base sps
+            var tbcsps=0 ; tbesps=0 ; tbfsps=0 ; tblsps=0 ; tbwsps=0 ;
+            var tcsps=0 ; tesps=0 ; tlsps=0 ; tfsps=0 ; twsps=0 ; 
+            var add_extra_csps=0 ; total_extra_csps=0 ; add_csps=0
+            var non_curs_owned=0 ; total_scripts_click=1 ;
+            var create_src="" ; create_id="" ; click_id=1 ;
+            var c_id="" ; lifetime_scripts=0 ; font_num=1 ; scripts_this_run=0 ;
+            var extra_csps_upgrade1 = false ;
+            //prestige vars
+            var obl=0 ; scripts_to_next_level=Math.pow(10,12)*(Math.pow((obl+1),3)-Math.pow(obl,3)) ; scripts_left_to_next_level=scripts_to_next_level ; potential_prestige_boost_mult=0 ; prestige_boost_mult=1 ;
+            //clicker consts
+            const clicker_button=document.getElementById("enter_button")
+            const num = document.getElementById("click_num")
+            //stat info consts
+            const new_name = document.getElementById("new_name").value
+            const banked_scripts = document.getElementById("banked_scripts")
+            const per_second = document.getElementById("scripts_per_second")
+            const life_scripts = document.getElementById("lifetime_scripts")
+            const per_click = document.getElementById("per_click")
+            const this_run = document.getElementById("scripts_this_run")
+            //item costs consts
+            const cur_cost=document.getElementById("cursor_cost")
+            const emp_cost=document.getElementById("employee_cost")
+            const lap_cost=document.getElementById("laptop_cost")
+            const fil_cost=document.getElementById("file_cost")
+            const wor_cost=document.getElementById("workspace_cost")
+                    //upgrade costs
+                                //  100      500      10,000     100,000     10 million    100 million     1 billion       10 billion         10 trillion         10 quadrillion            10 quintillion
+            const cursor_costs = [/*1*/100,/*2*/500,/*3*/10000,/*4*/100000,/*5*/10000000,/*6*/100000000,/*7*/1000000000,/*8*/10000000000,/*9*/10000000000000,/*10*/10000000000000000,/*11*/10000000000000000000]
+                                //    1,000     5,000      50,000    5 million    500 million     50 billion         50 trillion        50 quadrillion           50 quintillion              50 sextillion                   500 septillion
+            const employee_costs = [/*1*/1000,/*2*/5000,/*3*/50000,/*4*/5000000,/*5*/500000000,/*6*/50000000000,/*7*/50000000000000,/*8*/50000000000000000,/*9*/50000000000000000000,/*10*/50000000000000000000000,/*11*/500000000000000000000000000]
+                                //  11,000      55,000    550,000     55 million    5.5 billion       550 billion        550 trillion        550 quadrillion           550 quintillion                550 sextillion                    5.5 octillion
+            const laptop_costs = [/*1*/11000,/*2*/55000,/*3*/550000,/*4*/55000000,/*5*/5500000000,/*6*/550000000000,/*7*/550000000000000,/*8*/550000000000000000,/*9*/550000000000000000000,/*10*/550000000000000000000000,/*11*/,55000000000000000000000000]
+                                //600,000     6 million    600 million     60 billion        6 trillion         6 quadrillion           6 quintillion              6 sextillion                   6 septillion                   60 octillion   
+            const file_costs = [/*1*/600000,/*2*/6000000,/*3*/600000000,/*4*/60000000000,/*5*/6000000000000,/*6*/6000000000000000,/*7*/6000000000000000000,/*8*/6000000000000000000000,/*9*/6000000000000000000000000,/*10*/60000000000000000000000000]
+            //functions
+            function add_sps(){sps=(tcsps+tesps+tlsps+tfsps+twsps)*prestige_boost_mult}
+            function add_script()
+            {
+                scripts = +scripts + +total_scripts_click
+                lifetime_scripts = +lifetime_scripts + +total_scripts_click
+                scripts_this_run = +scripts_this_run + +total_scripts_click
+                scripts_left_to_next_level = scripts_left_to_next_level - total_scripts_click
+                document.getElementById("scripts_to_next_level").innerHTML=scripts_left_to_next_level + " scripts to next level"
+                clicks++
+                change_num()
+                //cloning
+                let x = event.clientX
+                x-=10
+                let y = event.clientY
+                y-=60
+                let randomClickX=Math.round(Math.random()*6)
+                let randomClickY=Math.round(Math.random()*6)
+                let posNegX=Math.round(Math.random()+1)
+                let posNegY=Math.round(Math.random()+1)
+                if (posNegX == 1){x-=randomClickX} else{x+=randomClickX}
+                if (posNegY ==1 ){y-=randomClickY} else{y+=randomClickY}
+                let body = document.querySelector('body')
+                var elem = document.querySelector('#click_num')
+                var clone = elem.cloneNode(true)
+                if (extra_csps_upgrade1 == true){clone.innerText='+'+total_scripts_click.toFixed(1)}
+                else{clone.innerText='+'+total_scripts_click}
+                clone.id = '+' + click_id.toString()
+                clone.classList.add('text-large')
+                clone.style.display="inline"
+                clone.style.fontSize="25px"
+                clone.style.webkitTextStroke='1px black'
+                clone.style.position="absolute"
+                clone.style.left = x + 'px'
+                clone.style.top = y + 'px'
+                clone.style.pointerEvents="none"
+                click_id++
+                body.appendChild(clone)
+                let opacity=1
+                var i = setInterval(function()
+                {
+                    clone.style.opacity=opacity
+                    opacity = opacity - 0.01
+                    if (opacity === 0) {clearInterval(i); body.removeChild(clone)}
+                },10)
+                $(document).ready(function(){
+                    var add_pos = $(clone).position().top
+                    $(clone).animate({top: add_pos-100},1000)
+                    element = document.getElementById(click_id)
+                })
+                setTimeout(() => {
+                    body.removeChild(clone)
+                }, 1000)
+                clicker_button.src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi31-073cabef-aaf1-4c5b-9817-d5e0fbcdd57f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemkzMS0wNzNjYWJlZi1hYWYxLTRjNWItOTgxNy1kNWUwZmJjZGQ1N2YucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.w8f8ztSr5A3-JgJsx_7dEsjootwL--DKZzHr5J3R6DQ"
+                setTimeout(()=>{clicker_button.src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi3q-ebcd3f9d-5986-4d9b-b0e8-6911ebdba4e6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemkzcS1lYmNkM2Y5ZC01OTg2LTRkOWItYjBlOC02OTExZWJkYmE0ZTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-PS31cE7NIvhpQmAEr0wlQGtLuHDKJMn8pLxyCxUrT4"
+                setTimeout(()=>{clicker_button.src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi4a-bbc336bc-c60e-44db-b132-61931cc3138d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemk0YS1iYmMzMzZiYy1jNjBlLTQ0ZGItYjEzMi02MTkzMWNjMzEzOGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sTgevweW3G-93TrBZwu4M_5ncRm5r4ai6ocRnhMVDbE"
+                setTimeout(()=>{clicker_button.src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfhzi0m-abe71b79-6ad0-4a7e-97fb-2cd9ffcaacf0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZoemkwbS1hYmU3MWI3OS02YWQwLTRhN2UtOTdmYi0yY2Q5ZmZjYWFjZjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.HpmcZplj3UQ28CwtRfuBQT68xP4SjDk-k_9y6DmOIxY"
+                },75)},75)},75)
+            }
+            function calc_cursor_upgrade1()
+            {
+                add_extra_csps = non_curs_owned * add_csps
+                total_extra_csps = add_extra_csps * owned_cursors
+                tcsps = tbcsps + total_extra_csps
+                total_scripts_click = base_scripts_click + add_extra_csps
+                add_sps()
+                document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+            }
+            function change_num()
+            {
+                let div_scripts_num=0
+                let real_scripts_num=scripts.toString()
+                let new_scripts_num=Math.floor(scripts).toString()
+                let scripts_length=Math.ceil(Math.log10(new_scripts_num))
+                console.log(scripts_length)
+                const num_names=[" hundred" , " thousand" , " million" , " billion" , " trillion" , " quadrillion" , " quintillion" , " sextillion" , " septillion" , " octillion" , " nonillion" , " decillion" , " undecillion" , " duodecillion" , " tredecillion" , " quattuordecillion" , " quindecillion" , " sexdecillion" , " septendecillion" , " octodecillion" , " novemdecillion" , " vigintillion" , " unvigintillion" , " duovigintillion" , " trevigintillion" , " quattuorvigintillion" , " sexvigintillion" , " septenvigintillion" , " octovigintillion" , " novemvigintillion"]
+                new_scripts_num=parseInt(new_scripts_num)
+                if (scripts_length > 6)
+                {
+                    real_scripts_num/=Math.pow(10,(scripts_length-div_scripts_num))
+                    console.log(real_scripts_num)
+                    if (scripts_length%3!=0){scripts_length--;div_scripts_num++
+                    if (scripts_length%3!=0){scripts_length--;div_scripts_num++}}
+                    new_scripts_num = new_scripts_num / Math.pow(10,(scripts_length-div_scripts_num))
+                    document.getElementById("show_scripts").innerHTML=real_scripts_num.toFixed(3) + num_names[Math.floor(scripts_length/3)] + " Scripts"
+                }
+                else {document.getElementById("show_scripts").innerHTML=new_scripts_num + " Scripts"}
+            }
+            function buy_cursor()
+            {
+                if (scripts >= cursor_cost)
+                {
+                    scripts = scripts - cursor_cost
+                    owned_cursors++
+                    tbcsps = base_cursor_sps * owned_cursors
+                    if (owned_cursors == 1){document.getElementById("div1").style.display="inline"}
+                    if (owned_cursors == 5){document.getElementById("div2").style.display="inline"}
+                    if (owned_cursors == 10){document.getElementById("div5").style.display="inline"}
+                    if (owned_cursors == 25){document.getElementById("div9").style.display="inline"}
+                    cursor_cost = Math.floor(15*(1.2**owned_cursors))
+                    document.getElementById("show_owned_curs").innerHTML="Owned: " + owned_cursors
+                    calc_cursor_upgrade1()
+                    document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+                    add_sps();show_all();check_costs()
+                }
+            }
+            function buy_employee()
+            {
+                if (scripts >= employee_cost)
+                {
+                    scripts = scripts - employee_cost
+                    non_curs_owned++
+                    owned_employees++
+                    tbesps = base_employee_sps * owned_employees
+                    tesps = tbesps
+                    if (owned_employees == 1){document.getElementById("div3").style.display="inline"}
+                    if (owned_employees == 5){document.getElementById("div4").style.display="inline"}
+                    if (owned_employees == 10){document.getElementById("div7").style.display="inline"}
+                    employee_cost = Math.floor(100*(1.2**owned_employees))
+                    document.getElementById("show_owned_employees").innerHTML="Owned: " + owned_employees
+                    //extra cursor sps stuff
+                    if (extra_csps_upgrade1==true){calc_cursor_upgrade1()}
+                    add_sps();show_all();check_costs()
+                }
+            }
+            function buy_laptop()
+            {
+                if (scripts >= laptop_cost)
+                {
+                    scripts = scripts - laptop_cost
+                    non_curs_owned++
+                    owned_laptops++
+                    laptop_cost = Math.floor(1100*(1.2**owned_laptops))
+                    tblsps = base_laptop_sps * owned_laptops
+                    tlsps = tblsps
+                    if (owned_laptops == 1){document.getElementById("div6").style.display="inline"}
+                    if (owned_laptops == 5){document.getElementById("div8").style.display="inline"}
+                    if (owned_laptops == 10){document.getElementById("div10").style.display="inline"}
+                    //extra cursor sps stuff
+                    if (extra_csps_upgrade1==true){calc_cursor_upgrade1()}
+                    add_sps();show_all();check_costs()
+                }
+            }
+            function buy_file()
+            {
+                if (scripts >= file_cost)
+                {
+                    scripts = scripts - file_cost
+                    non_curs_owned++
+                    owned_files++
+                    cost = Math.floor(12000*(1.2**owned_files))
+                    tbfsps = base_file_sps * owned_files
+                    tfsps = tbfsps
+                    if (owned_files == 1){document.getElementById("div11").style.display="inline"}
+                    if (owned_files == 5){document.getElementById("div12").style.display="inline"}
+                    if (owned_files == 10){document.getElementById("div16").style.display="inline"}
+                    //extra cursor sps stuff
+                    if (extra_csps_upgrade1==true){calc_cursor_upgrade1()}
+                    add_sps();show_all();check_costs()
+                }
+            }
+            function buy_workspace()
+            {
+                if (scripts >= workspace_cost)
+                {
+                    scripts = scripts - workspace_cost
+                    non_curs_owned++
+                    owned_workspaces++
+                    workspace_cost = Math.floor(130000*(1.2**owned_workspaces))
+                    tbwsps = base_workspace_sps * owned_workspaces
+                    twsps = tbwsps
+                    //extra cursor sps stuff
+                    if (extra_csps_upgrade1==true){calc_cursor_upgrade1()}
+                    add_sps();show_all();check_costs()
+                }
+            }
+            //check if owned scripts can pay for next item
+            function check_costs()
+            {
+                check_cost_arr=[cursor_cost , employee_cost , laptop_cost , file_cost , workspace_cost]
+                cost_elem_arr=["cursor_cost" , "employee_cost" , "laptop_cost" , "file_cost" , "workspace_cost"]
+                check_owned_arr=[owned_cursors , owned_employees , owned_laptops , owned_files , owned_workspaces]
+                owned_div_arr=["ocs" , "oep" , "olp" , "of" , "owp"]
+                owned_arr=["owned_cursors" , "owned_employees" , "owned_laptops" , "owned_files" , "owned_workspaces"]
+                for (i=0 ; i!=5 ; i++)
+                {
+                    if (scripts >= check_cost_arr[i]){document.getElementById(cost_elem_arr[i]).style.color='rgb(10, 170, 10)'}
+                    else{document.getElementById(cost_elem_arr[i]).style.color='rgb(255, 59, 0)'}
+                    if (check_owned_arr[i] >= 100){document.getElementById(owned_arr[i]).style.fontSize='60px';document.getElementById(owned_div_arr[i]).style.right='115px'}
+                    else if (check_owned_arr[i] >= 10){document.getElementById(owned_div_arr[i]).style.right='110px'}
+                }
+            }
+            owned_employees=100
+            //name changer functions
+            function change_name()
+            {
+                document.getElementById("name_btn").innerText = document.getElementById("new_name").value + "'s Corporation"
+                if (document.getElementById("new_name").value == ""){document.getElementById("name_btn").innerText="Your Corporation"}
+                back_to_game()
+            }
+            function back_to_game()
+            {
+                document.getElementById("change_background").style.display="none"
+                document.getElementById("name_changer").style.display="none"
+                document.getElementById("new_name").value=""
+                disable()
+            }
+            function show_name_changer()
+            {
+                a_u_o_d_k()
+                document.getElementById("change_background").style.display="block"
+                document.getElementById("name_changer").style.display="block"
+            }
+            //show or hide extra button functions
+            function show_hide_stats()
+            {
+                if (document.getElementById("stats").style.display=="none")
+                {
+                    if (document.getElementById("info").style.display=="block")
+                    {document.getElementById("info").style.display="none"}
+                    else if (document.getElementById("options").style.display=="block")
+                    {document.getElementById("options").style.display="none"}
+                    document.getElementById("stats").style.display="block"
+                }
+                else {document.getElementById("stats").style.display="none"}
+            }
+            function show_hide_info()
+            {
+                if (document.getElementById("info").style.display=="none")
+                {
+                    if (document.getElementById("stats").style.display=="block")
+                    {document.getElementById("stats").style.display="none"}
+                    else if (document.getElementById("options").style.display=="block")
+                    {document.getElementById("options").style.display="none"}
+                    document.getElementById("info").style.display="block"
+                }
+                else {document.getElementById("info").style.display="none"}
+            }
+            function show_hide_options()
+            {
+                if (document.getElementById("options").style.display=="none")
+                {
+                    if (document.getElementById("stats").style.display=="block")
+                    {document.getElementById("stats").style.display="none"}
+                    else if (document.getElementById("info").style.display=="block")
+                    {document.getElementById("info").style.display="none"}
+                    document.getElementById("options").style.display="block"
+                }
+                else {document.getElementById("options").style.display="none"}
+            }
+            //font changer
+            function change_font()
+            {
+                if (font_num==1)
+                {
+                    font_num=2
+                    document.body.style.fontFamily='sans-serif'
+                    $("button").css("font-family","sans-serif")
+                    document.getElementById("op_header").style.fontFamily="sans-serif"
+                    
+                }
+                else
+                {
+                    font_num=1
+                    document.body.style.fontFamily='kavoon,sans-serif'
+                    $("button").css("font-family","kavoon,sans-serif")
+                    document.getElementById("change_font").style.fontFamily="sans-serif"
+                    document.getElementById("op_header").style.fontFamily="kavoon,sans-serif"
+                }
+                
+            }
+            function show_all()
+            {
+                sps = +tcsps + +tesps + +tlsps + +tfsps + +twsps
+                document.getElementById("show_scripts").innerHTML=Math.floor(scripts) + " Scripts"
+                document.getElementById("show_sps").innerHTML=sps.toFixed(1) + " Per Second"
+                document.getElementById("owned_cursors").innerHTML=owned_cursors
+                document.getElementById("cursor_cost").innerHTML=cursor_cost + " Scripts"
+                document.getElementById("owned_employees").innerHTML=owned_employees
+                document.getElementById("employee_cost").innerHTML=employee_cost + " Scripts"
+                document.getElementById("owned_laptops").innerHTML=owned_laptops
+                document.getElementById("laptop_cost").innerHTML=laptop_cost + " Scripts"
+                document.getElementById("owned_files").innerHTML=owned_files
+                document.getElementById("file_cost").innerHTML=file_cost + " Scripts"
+                document.getElementById("owned_workspaces").innerHTML=owned_workspaces
+                document.getElementById("workspace_cost").innerHTML=workspace_cost + " Scripts"
+                document.getElementById("click_num").innerHTML='+'+total_scripts_click
+                check_costs()
+                change_num()
+                if (scripts == 1){document.getElementById("show_scripts").innerHTML="1 Script"}
+            }
+            function prestige()
+            {
+                //prestige loop
+                var obl=0
+                let scripts_to_next_level=Math.pow(10,12)*(Math.pow((obl+1),3)-Math.pow(obl,3))
+                let scripts_left_to_next_level=scripts_to_next_level
+                setInterval(()=>
+                {
+                    if (scripts_left_to_next_level<=0)
+                    {
+                        scripts_to_next_level=Math.pow(10,12)*(Math.pow((obl+1),3)-Math.pow(obl,3))
+                        scripts_left_to_next_level=scripts_to_next_level
+                        potential_prestige_boost_mult++
+                    }
+                    else
+                    {
+                        scripts_left_to_next_level=scripts_left_to_next_level-(sps/2)
+                        
+                    }
+                    document.getElementById("scripts_to_next_level").innerHTML=scripts_left_to_next_level+" scripts to next level"
+                },500)
+            }
+            //loop function
+            function loop()
+            {
+                //show items loop
+                setInterval(()=>
+                {
+                    if (scripts_this_run >= 100)
+                    {
+                        $('#shadow_emp').fadeOut(800)
+                        document.getElementById("employee_stuff_name").innerHTML="Employee"
+                    }
+                    if (scripts_this_run >= 650){$('#laptop_stuff').fadeIn(800)}
+                    if (scripts_this_run >= 1100)
+                        {
+                            $('#shadow_laptop').fadeOut(800)
+                            document.getElementById("laptop_name").innerHTML="Laptop"
+                        }
+                    if (scripts_this_run >= 7000){$('#file_stuff').fadeIn(800)}
+                    if (scripts_this_run >= 12000)
+                    {
+                        $('#shadow_file').fadeOut(800)
+                        document.getElementById("file_name").innerHTML="File"
+                    }
+                    if (scripts_this_run >= 40000){$('#workspace_stuff').fadeIn(800)}
+                    if (scripts_this_run >= 130000)
+                    {
+                        $('#shadow_workspace').fadeOut(800)
+                        document.getElementById("workspace_name").innerHTML="Workspace"
+                    }
+                },1500)
+                //Stats loop
+                setInterval(()=>
+                {
+                    banked_scripts.innerHTML="Scripts in bank: " + Math.floor(scripts)
+                    per_second.innerHTML="Per second: " + sps.toFixed(1)
+                    life_scripts.innerHTML="Lifetime scripts: " + Math.floor(lifetime_scripts)
+                    per_click.innerHTML="Scripts per click: " + total_scripts_click
+                    this_run.innerHTML="This run: " + Math.floor(scripts_this_run)
+                },2000)
+                //sps loop
+                setInterval(()=>
+                {
+                    scripts = +scripts + +(sps/10)
+                    lifetime_scripts = +lifetime_scripts + +(sps/10)
+                    scripts_this_run = +scripts_this_run + +(sps/10)
+                    show_all();check_costs()
+                },100)
+            }
+            //disables keyboard and right click
+            function disable(){document.onkeydown=function(e){return false}}
+            function a_u_o_d_k()
+            {
+                document.onkeydown=function(e){return true}
+                document.onkeydown=function(event) {event=(event || window.event) ; if (event.keyCode==123 || event.keyCode==13 || event.keyCode==9 || event.keyCode==13 || event.keyCode==16 || event.keyCode==17 || event.keyCode==18 || event.keyCode==19 || event.keyCode==27 || event.keyCode==33 || event.keyCode==34 || event.keyCode==35 || event.keyCode==36 || event.keyCode==37 || event.keyCode==38 || event.keyCode==39 || event.keyCode==40 || event.keyCode==44 || event.keyCode==45 || event.keyCode==46 || event.keyCode==91 || event.keyCode==92 || event.keyCode==93 || event.keyCode==112 || event.keyCode==113 || event.keyCode==114 || event.keyCode==115 || event.keyCode==117 || event.keyCode==118 || event.keyCode==119 || event.keyCode==120 || event.keyCode==121 || event.keyCode==122 || event.keyCode==184 || event.keyCode==183 || event.keyCode==186 || event.keyCode==187 || event.keyCode==188 || event.keyCode==189 || event.keyCode==190 || event.keyCode==191 || event.keyCode==219 || event.keyCode==220 || event.keyCode==221 || event.keyCode==222 || event.keyCode==116){return false}}
+            }
+            disable()
+            //hiding stuff
+            num.style.display="none"
+            document.getElementById("change_background").style.display="none"
+            document.getElementById("name_changer").style.display="none"
+            document.getElementById("stats").style.display="none"
+            document.getElementById("info").style.display="none"
+            document.getElementById("options").style.display="none"
+            document.getElementById("show_potential_prestige_levels").style.display="none"
+            document.getElementById("laptop_stuff").style.display="none"
+            document.getElementById("file_stuff").style.display="none"
+            document.getElementById("workspace_stuff").style.display="none"
+            for (i=1 ; i<19 ; i++){document.getElementById("div"+i).style.display="none"}
+            window.oncontextmenu = function(){return false}
+            loop()
+        </script>
+    </body>
+</html>

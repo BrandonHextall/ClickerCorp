@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <button id="buy_upgrade" onclick="buy_upgrade()"> Buy the upgrade </button>
+    <button id="buy_cursor" onclick="buy_cursor()"> Buy cursor </button>
+    <p id="cursps"> 0 </p>
+    <button id="buy_employee" onclick="buy_employee()"> Buy employee </button>
+    <p id="owned_employees"> 0 </p>
+    <script>
+        var base_cursor_sps=0.1 ; sps=0 ; 
+        var owned_cursors=0 ; owned_employees=0
+        var upgrade_bought=false
+        function buy_cursor()
+        {
+            owned_cursors++
+            sps = sps + base_cursor_sps
+        }
+        function buy_employee()
+        {
+            owned_employees++
+            document.getElementById("owned_employees").innerHTML=owned_employees
+            if (upgrade_bought==true)
+            {
+                
+            }
+        }
+        function buy_upgrade()
+        {
+
+        }
+    </script>
+</body>
+</html>
