@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--Extensions: EJS, .NET, Javascript, Live Server, Cyberpunk-->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title> Clicker Corp </title>
+        <link rel="icon" href="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfga5wg-990ec339-f4a8-4f2e-84cc-7a4c6f0b5883.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnYTV3Zy05OTBlYzMzOS1mNGE4LTRmMmUtODRjYy03YTRjNmYwYjU4ODMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.x1YY95a-jsp_xKeARA8nwMFL0hxD_HrdOCulCdM7t98">
+    </head>
+    <body style="font-family:Verdana, Geneva, Tahoma, sans-serif; overflow:auto">
+
+        <!--Items: large clickable enter button (done), cursors (done), employees (done), laptops, txt files, workspace, command prompts, VS-Code, servers, server rooms, enterpsrises -->
+        <!--Gains from clicking are Scripts -->
+        <!--Ticker needs doing (addition sorted, relative tick speed needs sorting) -->
+        <!--https://preview.redd.it/9fcxuix0zku01.png?width=640&crop=smart&auto=webp&s=864ede426e8281b19e367b916e4b3aa7b05bc7aa-->
+        <!--https://cookieclicker.fandom.com/wiki/Upgrades?file=All_Upgrades.png -->
+        <!--Needs upgrade box menu -->
+        <!--Upgrades need to have different coloured icons. Order of colours (11 different upgrades): 1) standard (strings), 2) lightish blue (variables), 3) red-pink (loops), 4) gold (ifs), 5) grey w/ green outline (functions), 6) very light grey w/ orange outline + yellow glow (multi-script), 7) chocolate orange w/ brown outline + purple glow (Auto-correcting), 8) bright blue w/ purple-y outline (Game Engines), 9) lime green (Packages), 10)  light grey w/ dark brown outline + red glow (Light Engines), 11) v/dark brown w/ black outline + rainbow glow (Artificial Intelligence)
+            OR
+            1) standard (1-Bit), 2) lightish blue (2-bit), 3) red-pink (4-bit), 4) gold (8-bit), 5) grey w/ green outline(16-bit), 6) very light grey w/ orange outline + yellow glow (ray-tracing), 7) chocolate orange w/ brown outline + purple glow (24-bit), 8) bright blue w/ purple-y outline (HD), 9) lime green (32-bit), 10) light grey w/ dark brown outline + red glow (64-bit), 11) v/dark brown w/ black outline + rainbow glow (4K)
+            -->
+        <!--Names of Ugrades:
+            Cursors- 
+            Employees- First Paycheck , -->
+        <!--Cursor colors done: all 11 -->
+        <!--Employee upgrades done: all 11 -->
+        <!--Use following link to make box for upgrades: https://psdtohtml.net/knowledge/html/how-to-create-box-html.html -->
+        <!--When game is done, make it more effiecient.
+            Found ways so far: Make an array for costs of upgrades and bought boolean instead of variables; 
+            -->
+
+        <!--Upgrade prices increase by set amount each time. CC Cursors: 100, 500 , 10,000 , 100,000 , 10 million , 100 million , 1 billion , 10 billion , 10 trillion , 10 quadrillion , 10 quintillion , 10 sextillion , 10 septillion , 10 octillion-->
+
+        <!--make a function for each upgrade div that sets which name and description follows the mouse while hovering over the image, and a second function called within
+            that makes the certain varibale text follow the cursor, as well as hides it onmouseout-->
+            <!--size of item icons: cursor-221x171 , employee-230x160 , laptop-230x310-->
+        <div class="clicker" style="overflow:auto">
+            <div id="enter_button">
+                <input type="image" name="button" alt="button" id="enter" onclick="add_script()" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lmw-f5e7180a-3848-465d-8de7-d671a012eeb0.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xtdy1mNWU3MTgwYS0zODQ4LTQ2NWQtOGRlNy1kNjcxYTAxMmVlYjAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.YvYm2H_vrr7y6xWl_YkVUVY9TBnOlTaTv3I3XMxw8yM">
+                <div id="name">
+                    <input type="image" id="name_bg" onclick="change_name()" width="400px" height="100px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgahvx-a4e2b5ef-7c90-4159-aeb9-baf76359d0b0.png/v1/fill/w_1280,h_512,strp/name_background_by_clickercorp_dfgahvx-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NTEyIiwicGF0aCI6IlwvZlwvZjQ5ZDBhNzMtMzkwOC00Y2U5LWExMWYtYzlmYzdjYjIwNzQ1XC9kZmdhaHZ4LWE0ZTJiNWVmLTdjOTAtNDE1OS1hZWI5LWJhZjc2MzU5ZDBiMC5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.2FvzgdYtrxJPFM539wmcLl1QXVdqeK93_k7liDOAkEI">
+                    <p id="corp_name" style="font-family:Verdana, Geneva, Tahoma, sans-serif ; font-size: 30px ;"> corporation </p>
+                </div>
+            </div>
+                <p id="scripts" style="font-family:Verdana, Geneva, Tahoma, sans-serif;text-align: center;"> Scripts: 0 </p>
+                <p id="sps" style="font-family:Verdana, Geneva, Tahoma, sans-serif; text-align: center;"> Scripts Per Second: 0 </p>
+        </div>
+        
+        <!-- Item menu (dropdown but always visible) -->
+        <div class="item_menu" style="overflow: auto">
+            <div class="item_box" style="overflow:auto">
+                <div class="items">
+                    <div id="cursor_stuff">
+                        <div id="cursors">
+                            <input type="image" name="cursor" alt="cursor_item" id="cursor" onclick="buy_cursor()" height="221px" width="171px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l2i-6b84629b-eafb-4c20-8abb-f208698d82da.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2wyaS02Yjg0NjI5Yi1lYWZiLTRjMjAtOGFiYi1mMjA4Njk4ZDgyZGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Tu5DMChSbsYtF7rw1TSwXzPFfvhbvTVzDj_a5qBrfIg">
+                        </div>
+                        <div id="show_cursors">
+                            <p id="owned_cursors" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;">  </p>
+                            <p id="cursor_cost" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;"> 15 scripts </p>
+                        </div>
+                    </div>
+                    <div id="employee_stuff">
+                        <div id="employees">
+                            <input type="image" name="employee" alt="employee_item" id="employee" onclick="buy_employee()" height="230px" width="160px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfga8f7-55d21214-321e-4d37-8184-9e485660e22b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnYThmNy01NWQyMTIxNC0zMjFlLTRkMzctODE4NC05ZTQ4NTY2MGUyMmIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rO0pCiDRY7iFGObJZbzV-G4ELOp_3tn7pm7WMz8RAJE">
+                        </div>
+                        <div id="show_emps">
+                            <p id="owned_emps" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;">  </p>
+                            <p id="emps_cost" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;"> 100 scripts </p>
+                        </div>
+                    </div>
+                    <div id="laptop-stuff">
+                        <div id="laptop">
+                            <input type="image" name="laptop" alt="laptop_item" id="laptop" onclick="buy_laptop()" height="230px" width="310px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7tkl-7e2b7563-3fe7-4bfe-810f-cb8fc6ce3b59.png/v1/fill/w_1280,h_813,strp/laptop_by_clickercorp_dfg7tkl-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9ODEzIiwicGF0aCI6IlwvZlwvZjQ5ZDBhNzMtMzkwOC00Y2U5LWExMWYtYzlmYzdjYjIwNzQ1XC9kZmc3dGtsLTdlMmI3NTYzLTNmZTctNGJmZS04MTBmLWNiOGZjNmNlM2I1OS5wbmciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.1l8fQxd8JHqjZrAoCczB0NgUsWS4Vn_z2Ew_mRSsZi4">
+                        </div>
+                        <div id="show_laptops">
+                            <p id="owned_laptops" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;">  </p>
+                            <p id="laptop_cost" style="font-family:Verdana, Geneva, Tahoma, sans-serif; font-size: 25px;"> 1100 scripts </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="news_ticker">
+            <p id="ticker" style="font-family:Verdana, Geneva, Tahoma, sans-serif" height="100px" width="200px"> News Ticker </p>
+        </div>
+        <!-- Upgrade Dropdown Menu-->
+        <div class="upgrade">
+            <div class="box">
+                <div class="upgrades">
+                    <div id="cu1_div" class="cu1_div">
+                        <input type="image" name="cur_upgrade_1" id="cu1" onclick="buy_cu1(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l3i-492cbf45-d9e6-4410-8bf9-e4d43640880d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2wzaS00OTJjYmY0NS1kOWU2LTQ0MTAtOGJmOS1lNGQ0MzY0MDg4MGQucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ocYAeTC_4wYKfnhC0FthKj9e-RSTCR-7fQMbP3GqbIo">
+                    </div>
+                    <div id="cu2_div" class="cu2_info">
+                        <input type="image" name="cur_upgrade_2" id="cu2" onclick="buy_cu2(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l45-b6012551-6c42-4aff-9965-d4309304b1ca.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w0NS1iNjAxMjU1MS02YzQyLTRhZmYtOTk2NS1kNDMwOTMwNGIxY2EucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.lx7FCah727cAvS-hWnK2vUxit-_dhfzVXhywmjBJA1Q">
+                    </div>
+                    <div id="eu1_div" class="eu1_div">
+                        <input type="image" name="emp_upgrade_1" id="eu1" onclick="buy_eu1(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7ldn-0d262585-ab64-473d-b636-686591327d3d.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xkbi0wZDI2MjU4NS1hYjY0LTQ3M2QtYjYzNi02ODY1OTEzMjdkM2QucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.MutINjlZ3RqtZU87oREGZQi00rV0Vt-LauW50J6jWyA">
+                    </div>
+                    <div id="cu3_div" class="cu3_div">
+                        <input type="image" name="cur_upgrade_3" id="cu3" onclick="buy_cu3(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l4f-1eb38938-dec3-4948-9f5f-15c3a10e21e6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w0Zi0xZWIzODkzOC1kZWMzLTQ5NDgtOWY1Zi0xNWMzYTEwZTIxZTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.rsh7krc4cf2lptjVooXhW_VBBXxr8S5jxERRdEzupDY">
+                    </div>
+                    <div id="eu2_div" class="eu2_div">
+                        <input type="image" name="emp_upgrade_2" id="eu2" onclick="buy_eu2(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lek-e7257487-51ac-4cc9-8da3-2b1a58e559e1.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xlay1lNzI1NzQ4Ny01MWFjLTRjYzktOGRhMy0yYjFhNThlNTU5ZTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.0xGnV0YBAMDgOSJk7clW9lxNYSAmtWoGsrxUyQIuop4">
+                    </div>
+                    <div id="cu4_div" class="cu4_div">
+                        <input type="image" name="cursor_upgrade_4" id="cu4" onclick="buy_cu4(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l4s-40d271fd-8066-4fac-bbe6-8e56a5587047.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w0cy00MGQyNzFmZC04MDY2LTRmYWMtYmJlNi04ZTU2YTU1ODcwNDcucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.WAK_beJhlit0cd0DJ6p-U7QCWqHEq-3CaHaATusgjg0">
+                    </div>
+                    <div id="cu5_div" class="cu5_div">
+                        <input type="image" name="cur_upgrade_5" id="cu5" onclick="buy_cu5(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="58px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l59-47f0dfc6-24da-4139-af0b-9bb3ce765a25.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w1OS00N2YwZGZjNi0yNGRhLTQxMzktYWYwYi05YmIzY2U3NjVhMjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.sszmedMa6oewz7Rnwcc8bMu_cwuWCFNxsfz86xyJPSw">
+                    </div>
+                    <div id="eu3_div" class="eu3_div">
+                        <input type="image" name="emp_upgrade_3" id="eu3" onclick="buy_eu3(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lf0-73ed6f04-22c3-4b40-8c08-7790465d9aea.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xmMC03M2VkNmYwNC0yMmMzLTRiNDAtOGMwOC03NzkwNDY1ZDlhZWEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.CcXRek_foqUU9ozm-BrGAxuxOCHrbWyzNSXhTnPVhTA">
+                    </div>
+                    <div id="cu6_div" class="cu6_div">
+                        <input type="image" name="cur_upgrade_6" id="cu6" onclick="buy_cu6(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l6l-6b360210-cfaf-4e38-93c9-348ef4da56af.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w2bC02YjM2MDIxMC1jZmFmLTRlMzgtOTNjOS0zNDhlZjRkYTU2YWYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.QVgF4E37S3MVFu1XwaRcBISoFoJj3fcVkOFJuEE1N44">
+                    </div>
+                    <div id="eu4_div" class="eu4_div">
+                        <input type="image" name="emp_upgrade_4" id="eu4" onclick="buy_eu4(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lfd-d3987985-9b3b-4d1a-820b-10c9200dffc6.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xmZC1kMzk4Nzk4NS05YjNiLTRkMWEtODIwYi0xMGM5MjAwZGZmYzYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.1cCaoEeztepgBee1YrBwecQp_1yRb1Sk3dUnJoVrmrs">
+                    </div>
+                    <div id="cu7_div" class="cu7_div">
+                        <input type="image" name="cur_upgrade_7" id="cu7" onclick="buy_cu7(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf3z8-06d8f375-7436-4805-9130-e23350bc771a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjN6OC0wNmQ4ZjM3NS03NDM2LTQ4MDUtOTEzMC1lMjMzNTBiYzc3MWEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.D2VCeOsXmjeh_MWnp0_0yvwSIjfzXgSdrEy0aLGC8uo">
+                    </div>
+                    <div id="eu5_div" class="eu5_div">
+                        <input type="image" name="emp_upgrade_5" id="eu5" onclick="buy_eu5(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lfu-dd357206-2fe4-45b8-bd1b-6dd037cafc11.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xmdS1kZDM1NzIwNi0yZmU0LTQ1YjgtYmQxYi02ZGQwMzdjYWZjMTEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ionNRMYl79XRhwsCRCcUY5mBBgd3RJVYPZGWr76gK2Q">
+                    </div>
+                    <div id="cu8_div" class="cu8_div">
+                        <input type="image" name="cur_upgrade_8" id="cu8" onclick="buy_cu8(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l79-3a34147a-423a-4815-bc3b-701013d8d473.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w3OS0zYTM0MTQ3YS00MjNhLTQ4MTUtYmMzYi03MDEwMTNkOGQ0NzMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.xe5UK99uqKBrNwSUfaEsnpeKSlnFRS3fEdVj442dZzE">
+                    </div>
+                    <div id="eu6_div" class="eu6_div">
+                        <input type="image" name="emp_upgrade_6" id="eu6" onclick="buy_eu6(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lg7-eb578600-14da-4055-a66c-20206b77b280.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xnNy1lYjU3ODYwMC0xNGRhLTQwNTUtYTY2Yy0yMDIwNmI3N2IyODAucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Eu66334UOL4PMMt91lu9A6Gk0kBuFnzUQZkWYpRHoPs">
+                    </div>
+                    <div id="cu9_div" class="cu9_div">
+                        <input type="image" name="cur_upgrade_9" id="cu9" onclick="buy_cu9(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l7m-ad224544-d528-4559-94ba-3f26ab04e24f.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w3bS1hZDIyNDU0NC1kNTI4LTQ1NTktOTRiYS0zZjI2YWIwNGUyNGYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Z5L__h18ckbuVjHMyRsbLOjkMXSzwE8f_0l2XCfg8fI">
+                    </div>
+                    <div id="eu7_div" class="eu7_div">
+                        <input type="image" name="emp_upgrade_7" id="eu7" onclick="buy_eu7(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lgp-36b63a15-2703-44f9-ac87-37fa6c73ecb3.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xncC0zNmI2M2ExNS0yNzAzLTQ0ZjktYWM4Ny0zN2ZhNmM3M2VjYjMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0._HRsIY9PsSsy0TqisRm1BuAYhYrJGajeSDeeSkthuZY">
+                    </div>
+                    <div id="eu8_div" class="eu8_div">
+                        <input type="image" name="emp_upgrade_8" id="eu8" onclick="buy_eu8(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lhi-61a0f407-d512-4342-907a-73a1c674b386.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xoaS02MWEwZjQwNy1kNTEyLTQzNDItOTA3YS03M2ExYzY3NGIzODYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.RIYkQdehzCo9f2qeJINFfMvn9rs3HCrbeiDhbVwX6o8">
+                    </div>
+                    <div id="cu10_div" class="cu10_div">
+                        <input type="image" name="cur_upgrade_10" id="cu10" onclick="buy_cu10(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l7u-48ad8640-a23a-4dab-a1a5-1f84a6115858.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w3dS00OGFkODY0MC1hMjNhLTRkYWItYTFhNS0xZjg0YTYxMTU4NTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.hmxFaMjDG3RSwfve2_sK3JoZXee1yR-iegEItCMguec">
+                    </div>
+                    <div id="eu9_div" class="eu9_div">
+                        <input type="image" name="emp_upgrade_9" id="eu9" onclick="buy_eu9(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lhv-2df7714f-4082-4e3f-b908-e1730d1e8b8c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xodi0yZGY3NzE0Zi00MDgyLTRlM2YtYjkwOC1lMTczMGQxZThiOGMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.bZRuz084189r_es9DLDBMjpyfhTUe8iDupK4HQe05kM">
+                    </div>
+                    <div id="cu11_div" class="cu11_div">
+                        <input type="image" name="cur_upgrade_11" id="cu11" onclick="buy_cu11(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="56px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7l8a-cb29c05c-d1af-416e-9e14-e3bb1b1d430a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2w4YS1jYjI5YzA1Yy1kMWFmLTQxNmUtOWUxNC1lM2JiMWIxZDQzMGEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.GQ8fQaZla-Othh0BT5IriB3x7-p-fddfDN6DXQsBrxk">
+                    </div>
+                    <div id="eu10_div" class="eu10_div">
+                        <input type="image" name="emp_upgrade_10" id="eu10" onclick="buy_eu10(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7lie-aa27310f-99a9-4f02-8e1e-e00d865434ac.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xpZS1hYTI3MzEwZi05OWE5LTRmMDItOGUxZS1lMDBkODY1NDM0YWMucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Vjg4Gj2iYMUoChoQuTNGToQbc-3UI8wjIkmwPSIl6nI">
+                    </div>
+                    <div id="eu11_div" class="eu11_div">
+                        <input type="image" name="emp_upgrade_11" id="eu11" onclick="buy_eu11(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="cursor_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfg7liu-bc65aa25-10c9-40f6-99ba-fdc715ee2f26.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnN2xpdS1iYzY1YWEyNS0xMGM5LTQwZjYtOTliYS1mZGM3MTVlZTJmMjYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Qep-QOCEDLCSoIjfjYvgvuYxXNuIGhE75Zgnnh0I_d0">
+                    </div>
+                    <div id="lu1_div" class="lu1_div">
+                        <input type="image" name="laptop_upgrade_1" id="lu1" onclick="buy_eu1(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf281-1ae36811-ba7b-4498-b564-6baa051cb937.png/v1/fill/w_1280,h_1067,strp/laptop_icon_1_by_clickercorp_dfgf281-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2NyIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjI4MS0xYWUzNjgxMS1iYTdiLTQ0OTgtYjU2NC02YmFhMDUxY2I5MzcucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.qqDSYPNu_RVaq3ObtJqx_q0k1CkLdYoptWobfBk85-I">
+                    </div>
+                    <div id="lu2_div" class="lu2_div">
+                        <input type="image" name="laptop_upgrade_1" id="lu1" onclick="buy_eu1(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf28p-c80faeba-420a-4345-a671-2bb22ccd6385.png/v1/fill/w_1280,h_1059,strp/laptop_icon_2_by_clickercorp_dfgf28p-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA1OSIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjI4cC1jODBmYWViYS00MjBhLTQzNDUtYTY3MS0yYmIyMmNjZDYzODUucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.RAiWSE_i6xqzMtcxNaJdIxWj-TVJEGJqLpCuk2bfNNs">
+                    </div>
+                    <div id="lu3_div" class="lu3_div">
+                        <input type="image" name="laptop_upgrade_1" id="lu1" onclick="buy_eu1(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf29d-b16a40fb-93ac-4b57-ba8b-c247108ff785.png/v1/fill/w_1280,h_1061,strp/laptop_icon_3_by_clickercorp_dfgf29d-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2MSIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjI5ZC1iMTZhNDBmYi05M2FjLTRiNTctYmE4Yi1jMjQ3MTA4ZmY3ODUucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.w7oU_V5MG7imWSJ1q6FRsRNR3KZvA5gv3spPLLovOrA">
+                    </div>
+                    <div id="lu4_div" class="lu4_div">
+                        <input type="image" name="laptop_upgrade_4" id="lu4" onclick="buy_lu4(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf29x-b8e1d2f3-fd2b-40cd-b3d6-0c2e50dedb93.png/v1/fill/w_1280,h_1057,strp/laptop_icon_4_by_clickercorp_dfgf29x-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA1NyIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjI5eC1iOGUxZDJmMy1mZDJiLTQwY2QtYjNkNi0wYzJlNTBkZWRiOTMucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.Fx4T2aXLDO4-ZqfXQdJ_e1AN4_GcKnB9R35usWRErNQ">
+                    </div>
+                    <div id="lu5_div" class="lu5_div">
+                        <input type="image" name="laptop_upgrade_1" id="lu5" onclick="buy_lu5(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2a2-737508e7-8334-4ffc-9609-fe9b495fe361.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJhMi03Mzc1MDhlNy04MzM0LTRmZmMtOTYwOS1mZTliNDk1ZmUzNjEucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.-1RqGaFPo2XJd8P6EGuI72SxDPNHG1C3kdwJOp7Uj38">
+                    </div>
+                    <div id="lu6_div" class="lu6_div">
+                        <input type="image" name="laptop_upgrade_6" id="lu6" onclick="buy_lu6(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2aa-0aa14c97-7564-4dd8-b157-23fdc2138e79.png/v1/fill/w_1280,h_1070,strp/laptop_icon_6_by_clickercorp_dfgf2aa-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA3MCIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJhYS0wYWExNGM5Ny03NTY0LTRkZDgtYjE1Ny0yM2ZkYzIxMzhlNzkucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.5fxyCsLfdbrqiBn24tooR2p45eVPg5c1gl1iw-8g4YU">
+                    </div>
+                    <div id="lu7_div" class="lu7_div">
+                        <input type="image" name="laptop_upgrade_7" id="lu7" onclick="buy_lu7(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2ap-62f3b3b2-14aa-4c25-a871-a41ab099554b.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJhcC02MmYzYjNiMi0xNGFhLTRjMjUtYTg3MS1hNDFhYjA5OTU1NGIucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.P_60eqC8VYi5zeTdPaQ5Bk4gusMd-ypqXWGlh35grRo">
+                    </div>
+                    <div id="lu8_div" class="lu8_div">
+                        <input type="image" name="laptop_upgrade_8" id="lu8" onclick="buy_lu8(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2av-a83f32b6-c879-4603-9a66-f7a7bbf04756.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJhdi1hODNmMzJiNi1jODc5LTQ2MDMtOWE2Ni1mN2E3YmJmMDQ3NTYucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.ET0Cw8fubuJ9r_8S45BRNSJ6wjrlLmu15OWTFg_61z8">
+                    </div>
+                    <div id="lu9_div" class="lu9_div">
+                        <input type="image" name="laptop_upgrade_9" id="lu9" onclick="buy_lu9(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2b4-f62094f9-f47a-4b4c-8f50-3abb44c50421.png/v1/fill/w_1280,h_1052,strp/laptop_icon_9_by_clickercorp_dfgf2b4-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA1MiIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJiNC1mNjIwOTRmOS1mNDdhLTRiNGMtOGY1MC0zYWJiNDRjNTA0MjEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.LUoXPLXjQTPP21reQcJYssTyFMtN3ImMxfWVy22VOUo">
+                    </div>
+                    <div id="lu10_div" class="lu10_div">
+                        <input type="image" name="laptop_upgrade_10" id="lu10" onclick="buy_lu10(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2be-4ab3cecc-ecc8-4f43-9a29-4b5605e9ded5.png/v1/fill/w_1280,h_1068,strp/laptop_icon_10_by_clickercorp_dfgf2be-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2OCIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJiZS00YWIzY2VjYy1lY2M4LTRmNDMtOWEyOS00YjU2MDVlOWRlZDUucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.cwvtWanCPpK5xO-HRWrAQO7k0oeJ2J-6MmqOZOQAeNk">
+                    </div>
+                    <div id="lu11_div" class="lu11_div">
+                        <input type="image" name="laptop_upgrade_1" id="lu11" onclick="buy_lu11(), hide_upgrades()" onmouseover="show_cu1" height="64px" width="64px" alt="laptop_upgrade" display="inline" onmouseout="document.getElementById('follower').style.display='none'" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f49d0a73-3908-4ce9-a11f-c9fc7cb20745/dfgf2bj-92559134-9561-4132-92aa-28e80b917ee1.png/v1/fill/w_1280,h_1066,strp/laptop_icon_11_by_clickercorp_dfgf2bj-fullview.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9MTA2NiIsInBhdGgiOiJcL2ZcL2Y0OWQwYTczLTM5MDgtNGNlOS1hMTFmLWM5ZmM3Y2IyMDc0NVwvZGZnZjJiai05MjU1OTEzNC05NTYxLTQxMzItOTJhYS0yOGU4MGI5MTdlZTEucG5nIiwid2lkdGgiOiI8PTEyODAifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6aW1hZ2Uub3BlcmF0aW9ucyJdfQ.38UH7CcHR-k-C8yamq_auMw7v-Zfk8-q-oxV2_qqDu4">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <span id="follower" style="position:absolute;"> name and desc </span>
+        <script type="text/javascript">
+            function follow_mouse()
+            {
+                document.addEventListener('mousemove', function(e)
+                {
+                let body = document.querySelector('body');
+                let follower = document.getElementById('follower');
+                let left = e.offsetX + 40;
+                let top = e.offsetY;
+                follower.style.left = left + 'px';
+                follower.style.top = top + 'px';
+                follower.style.color = "blue";
+                });
+            }
+
+        </script>
+        <style>
+            /* item box on right */
+            .item_box
+            {
+                width: 600px;
+                height: 967px;
+                border: 1px solid black;
+                top: 0px;
+                right: 0px;
+                overflow-y: scroll;
+            }
+            .item_box
+            {
+                position: absolute;
+                display: inline-block;
+            }
+            /*dropdown content (only shows first 4 until hovered)*/
+            .items
+            {
+                float:left;
+                position: absolute;
+                background-color: none;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                box-shadow: none;
+                right:0px;
+            }
+            /* upgrades within the menu */
+            .upgrades div
+            {
+                color: none;
+                text-decoration: none;
+                display:inline-block;
+            }
+        </style>
+        <!-- Upgrade menu -->
+        <style>
+            /* box */
+            .box
+            {
+                width: 512px;
+                height: 85px;
+                border: 1px solid red;
+                top: 200px;
+                left: 725px;
+            }
+            /* container <div> needed to position the content */
+            .box
+            {
+                position: absolute;
+                display: inline-block;
+            }
+            /*dropdown content (only shows first 4 until hovered)*/
+            .upgrades
+            {
+                float:left;
+                position: absolute;
+                background-color: none;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+                box-shadow: none;
+            }
+            /* upgrades within the menu */
+            .upgrades input
+            {
+                color: none;
+                padding: 12px 16px;
+                text-decoration: none;
+                display:inline;
+            }
+            /* changes color of dropdown links on hover */
+            .upgrades input:hover {background-color: none;}
+        </style>
+        <!-- Clicker Section -->
+        <style>
+            .clicker
+            {
+                position:absolute;
+                top:0px;
+                left:0px;
+                width: 660px;
+                height:967px;
+                border: 1px solid blue;
+            }
+        </style>
+        <script>
+            //setting variables
+            var clicks = 0
+            var scripts = 0
+            console.log(scripts)
+            var total_scripts = 0
+            var scripts_click = 1
+            var sps = 0
+            var owned_cursors = 500
+            var cursor_sps = 0.1
+            var total_cursor_sps = 0
+            var in_cur_cost = 15
+            var cursor_cost = 15
+            var owned_employees = 0
+            var employee_sps = 1
+            var total_employee_sps = 0
+            var in_emp_cost = 100
+            var employee_cost = 100
+            var owned_laptops = 0
+            var laptop_cost = 1100
+            var laptop_sps = 5
+            var time = 1000
+            var add_to_script = 0
+            var shown_upgrades = 0
+            var add_arr = ""
+            var item_doubler = ""
+            //upgrade variables
+            let upgrade_var_arr = new Array (cu1_cost=100 , cu2_cost=500 , cu3_cost=1000 , cu4_cost=5000 , cu5_cost=10000 , cu6_cost=25000 , cu7_cost=100000 , cu8_cost=750000 , cu9_cost=3000000 ,
+            cu10_cost=200000000 , cu11_cost=5000000000 , eu1_cost=1000 , eu2_cost=7000 , eu3_cost=40000 , eu4_cost=135000 , eu5_cost=800000 , eu6_cost=4500000 , eu7_cost=12750000 , eu8_cost=3850000000 ,
+            eu9_cost=16250000000 , eu10_cost=50000000000 , eu11_cost=2250000000)
+            let upgrade_bought = new Array (cu1_bought=false , cu2_bought=false , cu3_bought=false , cu4_bought=false , cu5_bought=false , cu6_bought=false , cu7_bought=false , cu8_bought=false ,
+            cu9_bought=false , cu10_bought=false , cu11_bought=false , eu1_bought=false , eu2_bought=false , eu3_bought=false , eu4_bought=false , eu5_bought=false , eu6_bought=false , eu7_bought=false ,
+            eu8_bought=false , eu9_bought=false , eu10_bought=false , eu11_bought=false , lu1_bought=false , lu2_bought=false , lu3_bought=false , lu4_bought=false , lu5_bought=false , lu6_bought=false ,
+            lu7_bought=false , lu8_bought=false , lu9_bought=false , lu10_bought=false , lu11_bought=false)
+            var bought = false
+            var lu1_cost = 5000
+            var lu1_bought = false
+            var lu2_cost = 40000
+            var lu2_bought = false
+            var lu3_cost = 130000
+            var lu3_bought = false
+            var lu4_cost = 250000
+            var lu4_bought = false
+            var lu5_cost = 500000
+            var lu5_bought = false
+            var lu6_cost = 2100000
+            var lu6_bought = false
+            var lu7_cost = 6000000
+            var lu7_bought = false
+            var lu8_cost = 14500000
+            var lu8_bought = false
+            var lu9_cost = 27000000
+            var lu9_bought = false
+            var lu10_cost = 60000000
+            var lu10_bought = false
+            var lu11_cost = 155000000
+            var lu11_bought = false
+            //setting constants
+            const clicker=document.getElementById("enter")
+            const script=document.getElementById("scripts")
+            const show_sps=document.getElementById("sps")
+            const ticker=document.getElementById("news_ticker")
+            const cursor_img=document.getElementById("cursors")
+            const cursor_box=document.getElementById("show_cursors")
+            const employee=document.getElementById("employees")
+            const employee_box=document.getElementById("show_emps")
+            const laptop=document.getElementById("laptop")
+            const laptop_box=document.getElementById("show_laptops")
+            const upgrade_dd=document.getElementById("dropdown")
+            const org_name=document.getElementById("corp_name")
+            const background=document.getElementById("name_bg")
+            const inc = 1.2
+            //upgrade constants
+            const up_arr = []
+            //setting position of shit
+            clicker.style.position="absolute"
+            clicker.style.top="400px"
+            clicker.style.left="50px"
+            script.style.position="absolute"
+            script.style.top="50px"
+            script.style.left="160px"
+            script.style.fontSize="70px"
+            show_sps.style.position="absolute"
+            show_sps.style.top="210px"
+            show_sps.style.left="175px"
+            show_sps.style.fontSize="40px"
+            ticker.style.position="absolute"
+            ticker.style.top="30px"
+            ticker.style.right="890px"
+            cursor_img.style.position="absolute"
+            cursor_img.style.top="30px"
+            cursor_img.style.right="380px"
+            cursor_box.style.position="absolute"
+            cursor_box.style.top="140px"
+            cursor_box.style.right="150px"
+            cursor_box.style.width="150px"
+            employee.style.position="absolute"
+            employee.style.top="300px"
+            employee.style.right="380px"
+            employee_box.style.position="absolute"
+            employee_box.style.top="420px"
+            employee_box.style.right="140px"
+            employee_box.style.width="150px"
+            laptop.style.position="absolute"
+            laptop.style.top="650px"
+            laptop.style.right="280px"
+            laptop_box.style.position="absolute"
+            laptop_box.style.top="780px"
+            laptop_box.style.right="100px"
+            laptop_box.style.width="170px"
+            laptop_box.style.height="30px"
+            org_name.style.position="absolute"
+            org_name.style.top="10px"
+            org_name.style.textAlign="center"
+            background.style.position="absolute"
+            background.style.top="10px"
+            background.style.left="110px"
+            //setting general game functions
+            function show_all()
+            {
+                cursor_cost = in_cur_cost * (inc ** owned_cursors)
+                employee_cost = in_emp_cost * (inc ** owned_employees)
+                document.getElementById("scripts").innerHTML=Math.floor(scripts) + " scripts"
+                document.getElementById("owned_cursors").innerHTML=owned_cursors
+                document.getElementById("cursor_cost").innerHTML=Math.floor(cursor_cost) + " scripts"
+                document.getElementById("owned_emps").innerHTML=owned_employees
+                document.getElementById("emps_cost").innerHTML=employee_cost + " scripts"
+                document.getElementById("sps").innerHTML=Math.round((sps * 10) /10) + " Per Second"
+            }
+            function add_script()
+            {
+                scripts = +scripts + +scripts_click
+                clicks++
+                total_scripts = +total_scripts + +scripts_click
+                console.log(scripts)
+                document.getElementById("scripts").innerHTML="Scripts: " + Math.floor(scripts)
+            }
+            //setting buy item functions
+            function buy_cursor()
+            {
+                if (scripts >= cursor_cost)
+                {
+                    owned_cursors++
+                    scripts = scripts - cursor_cost
+                    sps = (+sps + +cursor_sps).toFixed(1)
+                    total_cursor_sps = + total_cursor_sps + cursor_sps
+                    cursor_cost = Math.round(cursor_cost * inc)
+                    show_all()
+                    if ((owned_cursors >= 1) & (cu1_bought == false))
+                    {
+                        document.getElementById("cu1_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu1"
+                    }
+                    else if (owned_cursors >= 10 & cu2_bought == false)
+                    {
+                        document.getElementById("cu2_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu2"
+                    }
+                    else if (owned_cursors >= 25 & cu3_bought == false)
+                    {
+                        document.getElementById("cu3_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu3"
+                    }
+                    else if (owned_cursors >= 50 & cu4_bought == false)
+                    {
+                        document.getElementById("cu4_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu4"
+                    }
+                    else if (owned_cursors >= 100 & cu5_bought == false)
+                    {
+                        document.getElementById("cu5_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu5"
+                    }
+                    else if (owned_cursors >= 150 & cu6_bought == false)
+                    {
+                        document.getElementById("cu6_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu6"
+                    }
+                    else if (owned_cursors >= 200 & cu7_bought == false)
+                    {
+                        document.getElementById("cu7_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu7"
+                    }
+                    else if (owned_cursors >= 250 & cu8_bought == false)
+                    {
+                        document.getElementById("cu8_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu8"
+                    }
+                    else if (owned_cursors >= 300 & cu9_bought == false)
+                    {
+                        document.getElementById("cu9_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu9"
+                    }
+                    else if (owned_cursors >= 400 & cu10_bought == false)
+                    {
+                        document.getElementById("cu10_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu10"
+                    }
+                    else if (owned_cursors >= 500 & cu11_bought == false)
+                    {
+                        document.getElementById("cu11_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "cu11"
+                    }
+                }    
+            }
+            function buy_employee()
+            {
+                if (scripts >= employee_cost)
+                {
+                    owned_employees ++
+                    scripts = scripts - employee_cost
+                    sps = (+sps + + employee_sps).toFixed(1)
+                    total_employee_sps = +total_employee_sps + +employee_sps
+                    employee_cost = Math.round(employee_cost * inc)
+                    show_all()
+                    if ((owned_employees >= 1) & (eu1_bought == false))
+                    {
+                        document.getElementById("eu1_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu1"
+                    }
+                    if (owned_employees >= 10 & eu2_bought == false)
+                    {
+                        document.getElementById("eu2_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu2"
+                    }
+                    if (owned_employees >= 25 & eu3_bought == false)
+                    {
+                        document.getElementById("eu3_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu3"
+                    }
+                    if (owned_employees >= 50 & eu4_bought == false)
+                    {
+                        document.getElementById("eu4_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu4"
+                    }
+                    if (owned_employees >= 100 & eu5_bought == false)
+                    {
+                        document.getElementById("eu5_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu5"
+                    }
+                    if (owned_employees >= 150 & eu6_bought == false)
+                    {
+                        document.getElementById("eu6_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu6"
+                    }
+                    if (owned_employees >= 200 & eu7_bought == false)
+                    {
+                        document.getElementById("eu7_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu7"
+                    }
+                    if (owned_employees >= 250 & eu8_bought == false)
+                    {
+                        document.getElementById("eu8_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu8"
+                    }
+                    if (owned_employees >= 300 & eu9_bought == false)
+                    {
+                        document.getElementById("eu9_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu9"
+                    }
+                    if (owned_employees >= 400 & eu10_bought == false)
+                    {
+                        document.getElementById("eu10_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu10"
+                    }
+                    if (owned_employees >= 500 & eu11_bought == false)
+                    {
+                        document.getElementById("eu11_div").style.display="inline"
+                        shown_upgrades++
+                        add_arr = "eu11"
+                    }
+                    
+                }
+            }
+            function mult_cursor()
+            {
+                total_cursor_sps = total_cursor_sps * 2
+                sps = +total_cursor_sps + +total_employee_sps
+                scripts_click = scripts_click * 2
+                cursor_sps = cursor_sps * 2
+                shown_upgrades --
+                show_all()
+            }
+            function mult_emps()
+            {
+                total_employee_sps = total_employee_sps * 2
+                sps = +total_cursor_sps + +total_employee_sps
+                employee_sps = employee_sps * 2
+                show_all()
+            }
+            function buy_item_doubler()
+            {
+                document.getElementById(item_doubler).style.display="none"
+                slicer = item_doubler.slice(-1)
+                if (item_doubler[0] == "c")
+                {
+                    mult_cursor()
+                    if (slicer == '0' || 0)
+                    {
+                        scripts = scripts - cu10_cost
+                    }
+                    else if (slicer == '1' || 1)
+                    {
+                        if (item_doubler.slice(-2) == '11' || 11)
+                        {
+                            scripts = scripts - cu11_cost
+                        }
+                        else
+                        {
+                            scripts = scripts - cu1_cost
+                        }
+                    }
+                    else if (slicer == '2' || 2)
+                    {
+                        scripts = scripts - cu2_cost
+                    }
+                    else if (slicer == '3' || 3)
+                    {
+                        scripts = scripts - cu3_cost
+                    }
+                    else if (slicer == '4' || 4)
+                    {
+                        scripts = scripts - cu4_cost
+                    }
+                    else if (sclicer == '5' || 5)
+                    {
+                        scripts = scripts - cu5_cost
+                    }
+                    else if (slicer == '6' || 6)
+                    {
+                        scripts = scripts - cu6_cost
+                    }
+                    else if (slicer == '7' || 7)
+                    {
+                        scripts = scripts - cu7_cost
+                    }
+                    else if (slicer == '8' || 8)
+                    {
+                        scripts = scripts - cu8_cost
+                    }
+                    else
+                    {
+                        scripts = scripts - cu9_cost
+                    }
+                }
+                else if (item_doubler[0] == 'e')
+                {
+                    mult_emps
+                }
+            }
+            function buy_cu1()
+            {
+                if (scripts >= cu1_cost)
+                {
+                    scripts = scripts - cu1_cost
+                    document.getElementById("cu1").style.display="none"
+                    mult_cursor()
+                    cu1_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu2()
+            {
+                if (scripts >= cu2_cost)
+                {
+                    scripts = scripts - cu2_cost
+                    document.getElementById("cu2").style.display="none"
+                    mult_cursor()
+                    cu2_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu3()
+            {
+                if (scripts >= cu3_cost)
+                {
+                    scripts = scripts - cu3_cost
+                    document.getElementById("cu3").style.display="none"
+                    mult_cursor()
+                    cu3_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu4()
+            {
+                if (scripts >= cu4_cost)
+                {
+                    scripts = scripts - cu4_cost
+                    document.getElementById("cu4").style.display="none"
+                    mult_cursor()
+                    cu4_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu5()
+            {
+                if (scripts >= cu5_cost)
+                {
+                    scripts = scripts - cu5_cost
+                    document.getElementById("cu5").style.display="none"
+                    mult_cursor()
+                    cu5_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu6()
+            {
+                if (scripts >= cu6_cost)
+                {
+                    scripts = scripts - cu6_cost
+                    document.getElementById("cu6").style.display="none"
+                    mult_cursor()
+                    cu6_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu7()
+            {
+                if (scripts >= cu7_cost)
+                {
+                    scripts = scripts - cu7_cost
+                    document.getElementById("cu7").style.display="none"
+                    mult_cursor()
+                    cu7_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu8()
+            {
+                if (scripts >= cu8_cost)
+                {
+                    scripts = scripts - cu8_cost
+                    document.getElementById("cu8").style.display="none"
+                    mult_cursor()
+                    cu8_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu9()
+            {
+                if (scripts >= cu9_cost)
+                {
+                    scripts = scripts - cu9_cost
+                    document.getElementById("cu9").style.display="none"
+                    mult_cursor()
+                    cu9_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu10()
+            {
+                if (scripts >= cu10_cost)
+                {
+                    scripts = scripts - cu10_cost
+                    document.getElementById("cu10").style.display="none"
+                    mult_cursor()
+                    cu10_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu11()
+            {
+                if (scripts >= cu11_cost)
+                {
+                    scripts = scripts - cu11_cost
+                    document.getElementById("cu11").style.display="none"
+                    mult_cursor()
+                    cu11_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu1()
+            {
+                if (scripts >= eu1_cost)
+                {
+                    scripts = scripts - eu1_cost
+                    document.getElementById("eu1").style.display="none"
+                    mult_emps()
+                    eu1_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu2()
+            {
+                if (scripts >= eu2_cost)
+                {
+                    scripts = scripts - eu2_cost
+                    document.getElementById("eu2").style.display="none"
+                    mult_emps()
+                    eu2_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu3()
+            {
+                if (scripts >= eu3_cost)
+                {
+                    scripts = scripts - eu3_cost
+                    document.getElementById("eu3").style.display="none"
+                    mult_emps()
+                    eu3_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu4()
+            {
+                if (scripts >= eu4_cost)
+                {
+                    scripts = scripts - eu4_cost
+                    document.getElementById("eu4").style.display="none"
+                    mult_emps()
+                    eu4_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu5()
+            {
+                if (scripts >= eu5_cost)
+                {
+                    scripts = scripts - eu5_cost
+                    document.getElementById("eu5").style.display="none"
+                    mult_emps()
+                    eu5_bought = true
+                    shown_upgrades--
+                }
+
+                
+            }
+            function buy_eu6()
+            {
+                if (scripts >= eu6_cost)
+                {
+                    scripts = scripts - eu6_cost
+                    document.getElementById("eu6").style.display="none"
+                    mult_emps()
+                    eu6_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_cu7()
+            {
+                if (scripts >= cu7_cost)
+                {
+                    scripts = scripts - eu7_cost
+                    document.getElementById("eu7").style.display="none"
+                    mult_emps()
+                    eu7_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu8()
+            {
+                if (scripts >= eu8_cost)
+                {
+                    scripts = scripts - eu8_cost
+                    document.getElementById("eu8").style.display="none"
+                    mult_emps()
+                    eu8_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu9()
+            {
+                if (scripts >= eu9_cost)
+                {
+                    scripts = scripts - eu9_cost
+                    document.getElementById("eu9").style.display="none"
+                    mult_emps()
+                    eu9_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu10()
+            {
+                if (scripts >= eu10_cost)
+                {
+                    scripts = scripts - eu10_cost
+                    document.getElementById("eu10").style.display="none"
+                    mult_emps()
+                    eu10_bought = true
+                    shown_upgrades--
+                }
+            }
+            function buy_eu11()
+            {
+                if (scripts >= eu11_cost)
+                {
+                    scripts = scripts - eu11_cost
+                    document.getElementById("eu11").style.display="none"
+                    mult_emps()
+                    eu11_bought = true
+                    shown_upgrades--
+                }
+            }
+            function hide_upgrades()
+            {
+                if (owned_cursors < 500)
+                {
+                    document.getElementById("cu11").style.display="none"
+                    if (owned_cursors < 400)
+                    {
+                        document.getElementById("cu10").style.display="none"
+                        if (owned_cursors < 300)
+                        {
+                            document.getElementById("cu9").style.display="none"
+                            if (owned_cursors < 250)
+                            {
+                                document.getElementById("cu8").style.display="none"
+                                if (owned_cursors < 200)
+                                {
+                                    document.getElementById("cu7").style.display="none"
+                                    if (owned_cursors < 150)
+                                    {
+                                        document.getElementById("cu6").style.display="none"
+                                        if (owned_cursors < 100)
+                                        {
+                                            document.getElementById("cu5").style.display="none"
+                                            if (owned_cursors < 50)
+                                            {
+                                                document.getElementById("cu4").style.display="none"
+                                                if (owned_cursors < 25)
+                                                {
+                                                    document.getElementById("cu3").style.display="none"
+                                                    if (owned_cursors < 10)
+                                                    {
+                                                        document.getElementById("cu2").style.display="none"
+                                                        if (owned_cursors < 1)
+                                                        {
+                                                            document.getElementById("cu1").style.display="none"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (owned_employees < 500)
+                {
+                    document.getElementById("eu11").style.display="none"
+                    if (owned_employees < 400)
+                    {
+                        document.getElementById("eu10").style.display="none"
+                        if (owned_employees < 300)
+                        {
+                            document.getElementById("eu9").style.display="none"
+                            if (owned_employees < 250)
+                            {
+                                document.getElementById("eu8").style.display="none"
+                                if (owned_employees < 200)
+                                document.getElementById("eu7").style.display="none"
+                                if (owned_employees < 150)
+                                {
+                                    document.getElementById("eu6").style.display="none"
+                                    if (owned_employees < 100)
+                                    {
+                                        document.getElementById("eu5").style.display="none"
+                                        if (owned_employees < 50)
+                                        {
+                                            document.getElementById("eu4").style.display="none"
+                                            if (owned_employees < 25)
+                                            {
+                                                document.getElementById("eu3").style.display="none"
+                                                if (owned_employees < 10)
+                                                {
+                                                    document.getElementById("eu2").style.display="none"
+                                                    if (owned_employees < 1)
+                                                    {
+                                                        document.getElementById("eu1").style.display="none"
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            function show_cu1()
+            {
+                document.getElementById("follower").textContent="cursor upgrade 1"
+                document.getElementById("follower").style.display="block"
+                follow_mouse()
+            }
+            //sps loop
+            var counter = 0
+            function loop()
+            {
+                setInterval(()=>
+                {
+
+                    scripts = scripts + (sps/250)
+                    total_scripts = total_scripts + (sps/250)
+                    show_all()
+                },1)
+                setInterval(()=>
+                {
+                    counter++
+                    console.log(counter)
+                },1000)
+            }
+            loop()
+            
+            for (let i = 1; i < 12; i++)
+            {
+                document.getElementById("cu" + i + "_div").style.display="none";
+                document.getElementById("eu"+ i + "_div").style.display="none";
+                document.getElementById("lu" + i + "_div").style.display="none";
+            }
+            document.getElementById("cu1_div").style.display="none"
+        </script>
+
+
+    </body>
+</html>

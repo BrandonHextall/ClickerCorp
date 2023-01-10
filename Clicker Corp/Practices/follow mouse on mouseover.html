@@ -1,0 +1,43 @@
+<body>
+    <!-- attempt at follow mouse on image hover -->
+    <script>
+        document.getElementById("navi").addEventListener("mousemove", function() {
+        myFunction(event);
+        });
+
+        var mouse;
+        var cursor = document.getElementById("cursor");
+        function myFunction(e) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursor.style.left = (mouseX - 55) + "px";
+        cursor.style.top = (mouseY - 55) + "px";
+        }
+    </script>
+    <style>
+        body
+        {
+            background-color: #FFFDFA;
+        }
+        #cursor
+        {
+            height: 100px;
+            width: 100px;
+            position: absolute;
+            backface-visibility: hidden;
+            z-index: 9999999;
+            pointer-events: none; /* pointer-events: none is needed */
+            cursor: none;
+        }
+        div
+        {
+            background: black;
+            width: 200px;
+            height: 100px;
+            margin: 30px;
+            cursor: none;
+        } 
+    </style>
+        <img src="https://www.figurefoundry.xyz/metal-cursor.svg" id="cursor"></img>
+        <div id="navi"></div> <!--add id-->
+</body>
